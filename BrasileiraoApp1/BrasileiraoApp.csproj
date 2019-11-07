@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Classes\Campeonato.cs" />
+    <Compile Include="Model\Classes\Jogo.cs" />
+    <Compile Include="Model\Classes\Resultado.cs" />
+    <Compile Include="Model\Classes\Rodada.cs" />
+    <Compile Include="Model\Classes\Time.cs" />
+    <Compile Include="Model\Classes\Usuario.cs" />
     <Compile Include="View\FormAreaRestrita.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     <EmbeddedResource Include="View\FormInicio.resx">
       <DependentUpon>FormInicio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FormTabelaClassificacao.resx">
+      <DependentUpon>FormTabelaClassificacao.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -106,7 +115,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Imagens\" />
-    <Folder Include="Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
