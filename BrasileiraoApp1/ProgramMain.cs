@@ -8,9 +8,6 @@ namespace BrasileiraoApp1
 {
     static class ProgramMain
     {
-        /// <summary>
-        /// Ponto de entrada principal para o aplicativo.
-        /// </summary>
         [STAThread]
         static void Main()
         {

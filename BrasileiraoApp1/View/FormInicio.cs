@@ -20,8 +20,8 @@ namespace BrasileiraoApp1
 
         private void btnAreaRestrita_Click(object sender, EventArgs e)
         {
-            FormAreaRestrita areaRestrita = new FormAreaRestrita();
-            areaRestrita.Show();
+            FormAreaRestritaLogin areaRestritaLogin = new FormAreaRestritaLogin();
+            areaRestritaLogin.Show();
         }
 
         private void btnRodadas_Click(object sender, EventArgs e)

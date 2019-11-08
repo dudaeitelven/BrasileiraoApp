@@ -58,6 +58,12 @@
     <Compile Include="View\FormAreaRestrita.Designer.cs">
       <DependentUpon>FormAreaRestrita.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FormAreaRestritaLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormAreaRestritaLogin.Designer.cs">
+      <DependentUpon>FormAreaRestritaLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormEstatistica.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,8 +100,20 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\FormAreaRestrita.resx">
+      <DependentUpon>FormAreaRestrita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormAreaRestritaLogin.resx">
+      <DependentUpon>FormAreaRestritaLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormEstatistica.resx">
+      <DependentUpon>FormEstatistica.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormInicio.resx">
       <DependentUpon>FormInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormRodadas.resx">
+      <DependentUpon>FormRodadas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormTabelaClassificacao.resx">
       <DependentUpon>FormTabelaClassificacao.cs</DependentUpon>
@@ -114,6 +132,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Dao\" />
     <Folder Include="Imagens\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
