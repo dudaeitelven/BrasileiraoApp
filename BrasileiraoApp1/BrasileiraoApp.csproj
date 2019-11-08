@@ -76,7 +76,7 @@
     <Compile Include="View\FormInicio.Designer.cs">
       <DependentUpon>FormInicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProgramMain.cs" />
+    <Compile Include="Model\Classes\ProgramMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\FormRodadas.cs">
       <SubType>Form</SubType>
