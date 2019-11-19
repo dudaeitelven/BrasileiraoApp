@@ -35,6 +35,7 @@
             // 
             // btnTimesCampeonatos
             // 
+            this.btnTimesCampeonatos.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnTimesCampeonatos.Location = new System.Drawing.Point(210, 93);
             this.btnTimesCampeonatos.Name = "btnTimesCampeonatos";
             this.btnTimesCampeonatos.Size = new System.Drawing.Size(180, 40);
@@ -44,6 +45,7 @@
             // 
             // btnCampeonatoRodadas
             // 
+            this.btnCampeonatoRodadas.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCampeonatoRodadas.Location = new System.Drawing.Point(210, 157);
             this.btnCampeonatoRodadas.Name = "btnCampeonatoRodadas";
             this.btnCampeonatoRodadas.Size = new System.Drawing.Size(180, 40);
@@ -53,6 +55,7 @@
             // 
             // btnResultadoRodadas
             // 
+            this.btnResultadoRodadas.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnResultadoRodadas.Location = new System.Drawing.Point(210, 225);
             this.btnResultadoRodadas.Name = "btnResultadoRodadas";
             this.btnResultadoRodadas.Size = new System.Drawing.Size(180, 40);
