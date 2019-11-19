@@ -13,16 +13,16 @@ namespace BrasileiraoApp.Model.Classes
         private string historia;
         private DateTime anoFundacao;
         private float quantidadeTorcedores;
-        private int numeroTitulos;
+        private int quantidadeTitulos;
 
-        public Time(int id, string nome, string historia, DateTime anoFundacao, float quantidadeTorcedores, int numeroTitulos)
+        public Time(int id, string nome, string historia, DateTime anoFundacao, float quantidadeTorcedores, int quantidadeTitulos)
         {
             this.id = id;
             this.nome = nome;
             this.historia = historia;
             this.anoFundacao = anoFundacao;
             this.quantidadeTorcedores = quantidadeTorcedores;
-            this.numeroTitulos = numeroTitulos;
+            this.quantidadeTitulos = quantidadeTitulos;
         }
 
         public int Id { get => id; set => id = value; }
@@ -30,6 +30,6 @@ namespace BrasileiraoApp.Model.Classes
         public string Historia { get => historia; set => historia = value; }
         public DateTime AnoFundacao { get => anoFundacao; set => anoFundacao = value; }
         public float QuantidadeTorcedores { get => quantidadeTorcedores; set => quantidadeTorcedores = value; }
-        public int NumeroTitulos { get => numeroTitulos; set => numeroTitulos = value; }
+        public int quantidadeTitulos { get => quantidadeTitulos; set => quantidadeTitulos = value; }
     }
 }
