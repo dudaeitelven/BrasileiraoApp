@@ -1,0 +1,629 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CAMPEONATOSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CAMPEONATO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="250" />
+          <Property Name="historia" Type="varchar" MaxLength="250" />
+          <Property Name="ano" Type="int" Nullable="false" />
+          <Property Name="quantidadeTimes" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JOGO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idRodada" Type="int" Nullable="false" />
+          <Property Name="idCampeonato" Type="int" Nullable="false" />
+          <Property Name="idTimeCasa" Type="int" Nullable="false" />
+          <Property Name="golsCasa" Type="int" Nullable="false" />
+          <Property Name="numeroFaltasCasa" Type="int" Nullable="false" />
+          <Property Name="idTimeVisitante" Type="int" Nullable="false" />
+          <Property Name="golsVisitante" Type="int" Nullable="false" />
+          <Property Name="numeroFaltasVisitante" Type="int" Nullable="false" />
+          <Property Name="observacaoJogo" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="RESULTADO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idTime" Type="int" Nullable="false" />
+          <Property Name="idRodada" Type="int" Nullable="false" />
+          <Property Name="idCampeonato" Type="int" Nullable="false" />
+          <Property Name="pontos" Type="int" Nullable="false" />
+          <Property Name="saldoGols" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RODADA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCampeonato" Type="int" Nullable="false" />
+          <Property Name="numeroRodada" Type="int" Nullable="false" />
+          <Property Name="dataRodada" Type="date" />
+        </EntityType>
+        <EntityType Name="TIME">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="historia" Type="varchar" MaxLength="250" />
+          <Property Name="anoFundacao" Type="int" />
+          <Property Name="quantidadeTorcedores" Type="int" />
+          <Property Name="quantidadeTitulos" Type="int" />
+        </EntityType>
+        <EntityType Name="TIME_CAMPEONATO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idTime" Type="int" Nullable="false" />
+          <Property Name="idCampeonato" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="senha" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="dataNascimento" Type="date" />
+        </EntityType>
+        <Association Name="FK_JOGO_ID_CAMPEONATO">
+          <End Role="CAMPEONATO" Type="Self.CAMPEONATO" Multiplicity="1" />
+          <End Role="JOGO" Type="Self.JOGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMPEONATO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="JOGO">
+              <PropertyRef Name="idCampeonato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JOGO_ID_RODADA">
+          <End Role="RODADA" Type="Self.RODADA" Multiplicity="1" />
+          <End Role="JOGO" Type="Self.JOGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RODADA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="JOGO">
+              <PropertyRef Name="idRodada" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JOGO_ID_TIME_CASA">
+          <End Role="TIME" Type="Self.TIME" Multiplicity="1" />
+          <End Role="JOGO" Type="Self.JOGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIME">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="JOGO">
+              <PropertyRef Name="idTimeCasa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JOGO_ID_TIME_VISITANTE">
+          <End Role="TIME" Type="Self.TIME" Multiplicity="1" />
+          <End Role="JOGO" Type="Self.JOGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIME">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="JOGO">
+              <PropertyRef Name="idTimeVisitante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESULTADO_ID_CAMPEONATO">
+          <End Role="CAMPEONATO" Type="Self.CAMPEONATO" Multiplicity="1" />
+          <End Role="RESULTADO" Type="Self.RESULTADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMPEONATO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RESULTADO">
+              <PropertyRef Name="idCampeonato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESULTADO_ID_RODADA">
+          <End Role="RODADA" Type="Self.RODADA" Multiplicity="1" />
+          <End Role="RESULTADO" Type="Self.RESULTADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RODADA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RESULTADO">
+              <PropertyRef Name="idRodada" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESULTADO_ID_TIME">
+          <End Role="TIME" Type="Self.TIME" Multiplicity="1" />
+          <End Role="RESULTADO" Type="Self.RESULTADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIME">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RESULTADO">
+              <PropertyRef Name="idTime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RODADA_ID_CAMPEONATO">
+          <End Role="CAMPEONATO" Type="Self.CAMPEONATO" Multiplicity="1" />
+          <End Role="RODADA" Type="Self.RODADA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMPEONATO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RODADA">
+              <PropertyRef Name="idCampeonato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TIME_CAMPEONATO_ID_CAMPEONATO">
+          <End Role="CAMPEONATO" Type="Self.CAMPEONATO" Multiplicity="1" />
+          <End Role="TIME_CAMPEONATO" Type="Self.TIME_CAMPEONATO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMPEONATO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TIME_CAMPEONATO">
+              <PropertyRef Name="idCampeonato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TIME_CAMPEONATO_ID_TIME">
+          <End Role="TIME" Type="Self.TIME" Multiplicity="1" />
+          <End Role="TIME_CAMPEONATO" Type="Self.TIME_CAMPEONATO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIME">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TIME_CAMPEONATO">
+              <PropertyRef Name="idTime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CAMPEONATOSModelStoreContainer">
+          <EntitySet Name="CAMPEONATO" EntityType="Self.CAMPEONATO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JOGO" EntityType="Self.JOGO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RESULTADO" EntityType="Self.RESULTADO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RODADA" EntityType="Self.RODADA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIME" EntityType="Self.TIME" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIME_CAMPEONATO" EntityType="Self.TIME_CAMPEONATO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_JOGO_ID_CAMPEONATO" Association="Self.FK_JOGO_ID_CAMPEONATO">
+            <End Role="CAMPEONATO" EntitySet="CAMPEONATO" />
+            <End Role="JOGO" EntitySet="JOGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JOGO_ID_RODADA" Association="Self.FK_JOGO_ID_RODADA">
+            <End Role="RODADA" EntitySet="RODADA" />
+            <End Role="JOGO" EntitySet="JOGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JOGO_ID_TIME_CASA" Association="Self.FK_JOGO_ID_TIME_CASA">
+            <End Role="TIME" EntitySet="TIME" />
+            <End Role="JOGO" EntitySet="JOGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JOGO_ID_TIME_VISITANTE" Association="Self.FK_JOGO_ID_TIME_VISITANTE">
+            <End Role="TIME" EntitySet="TIME" />
+            <End Role="JOGO" EntitySet="JOGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESULTADO_ID_CAMPEONATO" Association="Self.FK_RESULTADO_ID_CAMPEONATO">
+            <End Role="CAMPEONATO" EntitySet="CAMPEONATO" />
+            <End Role="RESULTADO" EntitySet="RESULTADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESULTADO_ID_RODADA" Association="Self.FK_RESULTADO_ID_RODADA">
+            <End Role="RODADA" EntitySet="RODADA" />
+            <End Role="RESULTADO" EntitySet="RESULTADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESULTADO_ID_TIME" Association="Self.FK_RESULTADO_ID_TIME">
+            <End Role="TIME" EntitySet="TIME" />
+            <End Role="RESULTADO" EntitySet="RESULTADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RODADA_ID_CAMPEONATO" Association="Self.FK_RODADA_ID_CAMPEONATO">
+            <End Role="CAMPEONATO" EntitySet="CAMPEONATO" />
+            <End Role="RODADA" EntitySet="RODADA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TIME_CAMPEONATO_ID_CAMPEONATO" Association="Self.FK_TIME_CAMPEONATO_ID_CAMPEONATO">
+            <End Role="CAMPEONATO" EntitySet="CAMPEONATO" />
+            <End Role="TIME_CAMPEONATO" EntitySet="TIME_CAMPEONATO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TIME_CAMPEONATO_ID_TIME" Association="Self.FK_TIME_CAMPEONATO_ID_TIME">
+            <End Role="TIME" EntitySet="TIME" />
+            <End Role="TIME_CAMPEONATO" EntitySet="TIME_CAMPEONATO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CAMPEONATOSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CAMPEONATO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="historia" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ano" Type="Int32" Nullable="false" />
+          <Property Name="quantidadeTimes" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="JOGO" Relationship="Self.FK_JOGO_ID_CAMPEONATO" FromRole="CAMPEONATO" ToRole="JOGO" />
+          <NavigationProperty Name="RESULTADO" Relationship="Self.FK_RESULTADO_ID_CAMPEONATO" FromRole="CAMPEONATO" ToRole="RESULTADO" />
+          <NavigationProperty Name="RODADA" Relationship="Self.FK_RODADA_ID_CAMPEONATO" FromRole="CAMPEONATO" ToRole="RODADA" />
+          <NavigationProperty Name="TIME_CAMPEONATO" Relationship="Self.FK_TIME_CAMPEONATO_ID_CAMPEONATO" FromRole="CAMPEONATO" ToRole="TIME_CAMPEONATO" />
+        </EntityType>
+        <EntityType Name="JOGO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idRodada" Type="Int32" Nullable="false" />
+          <Property Name="idCampeonato" Type="Int32" Nullable="false" />
+          <Property Name="idTimeCasa" Type="Int32" Nullable="false" />
+          <Property Name="golsCasa" Type="Int32" Nullable="false" />
+          <Property Name="numeroFaltasCasa" Type="Int32" Nullable="false" />
+          <Property Name="idTimeVisitante" Type="Int32" Nullable="false" />
+          <Property Name="golsVisitante" Type="Int32" Nullable="false" />
+          <Property Name="numeroFaltasVisitante" Type="Int32" Nullable="false" />
+          <Property Name="observacaoJogo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CAMPEONATO" Relationship="Self.FK_JOGO_ID_CAMPEONATO" FromRole="JOGO" ToRole="CAMPEONATO" />
+          <NavigationProperty Name="RODADA" Relationship="Self.FK_JOGO_ID_RODADA" FromRole="JOGO" ToRole="RODADA" />
+          <NavigationProperty Name="TIME" Relationship="Self.FK_JOGO_ID_TIME_CASA" FromRole="JOGO" ToRole="TIME" />
+          <NavigationProperty Name="TIME1" Relationship="Self.FK_JOGO_ID_TIME_VISITANTE" FromRole="JOGO" ToRole="TIME" />
+        </EntityType>
+        <EntityType Name="RESULTADO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTime" Type="Int32" Nullable="false" />
+          <Property Name="idRodada" Type="Int32" Nullable="false" />
+          <Property Name="idCampeonato" Type="Int32" Nullable="false" />
+          <Property Name="pontos" Type="Int32" Nullable="false" />
+          <Property Name="saldoGols" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CAMPEONATO" Relationship="Self.FK_RESULTADO_ID_CAMPEONATO" FromRole="RESULTADO" ToRole="CAMPEONATO" />
+          <NavigationProperty Name="RODADA" Relationship="Self.FK_RESULTADO_ID_RODADA" FromRole="RESULTADO" ToRole="RODADA" />
+          <NavigationProperty Name="TIME" Relationship="Self.FK_RESULTADO_ID_TIME" FromRole="RESULTADO" ToRole="TIME" />
+        </EntityType>
+        <EntityType Name="RODADA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCampeonato" Type="Int32" Nullable="false" />
+          <Property Name="numeroRodada" Type="Int32" Nullable="false" />
+          <Property Name="dataRodada" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CAMPEONATO" Relationship="Self.FK_RODADA_ID_CAMPEONATO" FromRole="RODADA" ToRole="CAMPEONATO" />
+          <NavigationProperty Name="JOGO" Relationship="Self.FK_JOGO_ID_RODADA" FromRole="RODADA" ToRole="JOGO" />
+          <NavigationProperty Name="RESULTADO" Relationship="Self.FK_RESULTADO_ID_RODADA" FromRole="RODADA" ToRole="RESULTADO" />
+        </EntityType>
+        <EntityType Name="TIME">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="historia" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="anoFundacao" Type="Int32" />
+          <Property Name="quantidadeTorcedores" Type="Int32" />
+          <Property Name="quantidadeTitulos" Type="Int32" />
+          <NavigationProperty Name="JOGO" Relationship="Self.FK_JOGO_ID_TIME_CASA" FromRole="TIME" ToRole="JOGO" />
+          <NavigationProperty Name="JOGO1" Relationship="Self.FK_JOGO_ID_TIME_VISITANTE" FromRole="TIME" ToRole="JOGO" />
+          <NavigationProperty Name="RESULTADO" Relationship="Self.FK_RESULTADO_ID_TIME" FromRole="TIME" ToRole="RESULTADO" />
+          <NavigationProperty Name="TIME_CAMPEONATO" Relationship="Self.FK_TIME_CAMPEONATO_ID_TIME" FromRole="TIME" ToRole="TIME_CAMPEONATO" />
+        </EntityType>
+        <EntityType Name="TIME_CAMPEONATO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTime" Type="Int32" Nullable="false" />
+          <Property Name="idCampeonato" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CAMPEONATO" Relationship="Self.FK_TIME_CAMPEONATO_ID_CAMPEONATO" FromRole="TIME_CAMPEONATO" ToRole="CAMPEONATO" />
+          <NavigationProperty Name="TIME" Relationship="Self.FK_TIME_CAMPEONATO_ID_TIME" FromRole="TIME_CAMPEONATO" ToRole="TIME" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="senha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dataNascimento" Type="DateTime" Precision="0" />
+        </EntityType>
+        <Association Name="FK_JOGO_ID_CAMPEONATO">
+          <End Role="CAMPEONATO" Type="Self.CAMPEONATO" Multiplicity="1" />
+          <End Role="JOGO" Type="Self.JOGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMPEONATO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="JOGO">
+              <PropertyRef Name="idCampeonato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESULTADO_ID_CAMPEONATO">
+          <End Role="CAMPEONATO" Type="Self.CAMPEONATO" Multiplicity="1" />
+          <End Role="RESULTADO" Type="Self.RESULTADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMPEONATO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RESULTADO">
+              <PropertyRef Name="idCampeonato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RODADA_ID_CAMPEONATO">
+          <End Role="CAMPEONATO" Type="Self.CAMPEONATO" Multiplicity="1" />
+          <End Role="RODADA" Type="Self.RODADA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMPEONATO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RODADA">
+              <PropertyRef Name="idCampeonato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TIME_CAMPEONATO_ID_CAMPEONATO">
+          <End Role="CAMPEONATO" Type="Self.CAMPEONATO" Multiplicity="1" />
+          <End Role="TIME_CAMPEONATO" Type="Self.TIME_CAMPEONATO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMPEONATO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TIME_CAMPEONATO">
+              <PropertyRef Name="idCampeonato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JOGO_ID_RODADA">
+          <End Role="RODADA" Type="Self.RODADA" Multiplicity="1" />
+          <End Role="JOGO" Type="Self.JOGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RODADA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="JOGO">
+              <PropertyRef Name="idRodada" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JOGO_ID_TIME_CASA">
+          <End Role="TIME" Type="Self.TIME" Multiplicity="1" />
+          <End Role="JOGO" Type="Self.JOGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIME">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="JOGO">
+              <PropertyRef Name="idTimeCasa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JOGO_ID_TIME_VISITANTE">
+          <End Role="TIME" Type="Self.TIME" Multiplicity="1" />
+          <End Role="JOGO" Type="Self.JOGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIME">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="JOGO">
+              <PropertyRef Name="idTimeVisitante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESULTADO_ID_RODADA">
+          <End Role="RODADA" Type="Self.RODADA" Multiplicity="1" />
+          <End Role="RESULTADO" Type="Self.RESULTADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RODADA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RESULTADO">
+              <PropertyRef Name="idRodada" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESULTADO_ID_TIME">
+          <End Role="TIME" Type="Self.TIME" Multiplicity="1" />
+          <End Role="RESULTADO" Type="Self.RESULTADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIME">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RESULTADO">
+              <PropertyRef Name="idTime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TIME_CAMPEONATO_ID_TIME">
+          <End Role="TIME" Type="Self.TIME" Multiplicity="1" />
+          <End Role="TIME_CAMPEONATO" Type="Self.TIME_CAMPEONATO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIME">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TIME_CAMPEONATO">
+              <PropertyRef Name="idTime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CAMPEONATOSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CAMPEONATO" EntityType="Self.CAMPEONATO" />
+          <EntitySet Name="JOGO" EntityType="Self.JOGO" />
+          <EntitySet Name="RESULTADO" EntityType="Self.RESULTADO" />
+          <EntitySet Name="RODADA" EntityType="Self.RODADA" />
+          <EntitySet Name="TIME" EntityType="Self.TIME" />
+          <EntitySet Name="TIME_CAMPEONATO" EntityType="Self.TIME_CAMPEONATO" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+          <AssociationSet Name="FK_JOGO_ID_CAMPEONATO" Association="Self.FK_JOGO_ID_CAMPEONATO">
+            <End Role="CAMPEONATO" EntitySet="CAMPEONATO" />
+            <End Role="JOGO" EntitySet="JOGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESULTADO_ID_CAMPEONATO" Association="Self.FK_RESULTADO_ID_CAMPEONATO">
+            <End Role="CAMPEONATO" EntitySet="CAMPEONATO" />
+            <End Role="RESULTADO" EntitySet="RESULTADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RODADA_ID_CAMPEONATO" Association="Self.FK_RODADA_ID_CAMPEONATO">
+            <End Role="CAMPEONATO" EntitySet="CAMPEONATO" />
+            <End Role="RODADA" EntitySet="RODADA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TIME_CAMPEONATO_ID_CAMPEONATO" Association="Self.FK_TIME_CAMPEONATO_ID_CAMPEONATO">
+            <End Role="CAMPEONATO" EntitySet="CAMPEONATO" />
+            <End Role="TIME_CAMPEONATO" EntitySet="TIME_CAMPEONATO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JOGO_ID_RODADA" Association="Self.FK_JOGO_ID_RODADA">
+            <End Role="RODADA" EntitySet="RODADA" />
+            <End Role="JOGO" EntitySet="JOGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JOGO_ID_TIME_CASA" Association="Self.FK_JOGO_ID_TIME_CASA">
+            <End Role="TIME" EntitySet="TIME" />
+            <End Role="JOGO" EntitySet="JOGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JOGO_ID_TIME_VISITANTE" Association="Self.FK_JOGO_ID_TIME_VISITANTE">
+            <End Role="TIME" EntitySet="TIME" />
+            <End Role="JOGO" EntitySet="JOGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESULTADO_ID_RODADA" Association="Self.FK_RESULTADO_ID_RODADA">
+            <End Role="RODADA" EntitySet="RODADA" />
+            <End Role="RESULTADO" EntitySet="RESULTADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESULTADO_ID_TIME" Association="Self.FK_RESULTADO_ID_TIME">
+            <End Role="TIME" EntitySet="TIME" />
+            <End Role="RESULTADO" EntitySet="RESULTADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TIME_CAMPEONATO_ID_TIME" Association="Self.FK_TIME_CAMPEONATO_ID_TIME">
+            <End Role="TIME" EntitySet="TIME" />
+            <End Role="TIME_CAMPEONATO" EntitySet="TIME_CAMPEONATO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CAMPEONATOSModelStoreContainer" CdmEntityContainer="CAMPEONATOSEntities">
+          <EntitySetMapping Name="CAMPEONATO">
+            <EntityTypeMapping TypeName="CAMPEONATOSModel.CAMPEONATO">
+              <MappingFragment StoreEntitySet="CAMPEONATO">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="historia" ColumnName="historia" />
+                <ScalarProperty Name="ano" ColumnName="ano" />
+                <ScalarProperty Name="quantidadeTimes" ColumnName="quantidadeTimes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JOGO">
+            <EntityTypeMapping TypeName="CAMPEONATOSModel.JOGO">
+              <MappingFragment StoreEntitySet="JOGO">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idRodada" ColumnName="idRodada" />
+                <ScalarProperty Name="idCampeonato" ColumnName="idCampeonato" />
+                <ScalarProperty Name="idTimeCasa" ColumnName="idTimeCasa" />
+                <ScalarProperty Name="golsCasa" ColumnName="golsCasa" />
+                <ScalarProperty Name="numeroFaltasCasa" ColumnName="numeroFaltasCasa" />
+                <ScalarProperty Name="idTimeVisitante" ColumnName="idTimeVisitante" />
+                <ScalarProperty Name="golsVisitante" ColumnName="golsVisitante" />
+                <ScalarProperty Name="numeroFaltasVisitante" ColumnName="numeroFaltasVisitante" />
+                <ScalarProperty Name="observacaoJogo" ColumnName="observacaoJogo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESULTADO">
+            <EntityTypeMapping TypeName="CAMPEONATOSModel.RESULTADO">
+              <MappingFragment StoreEntitySet="RESULTADO">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idTime" ColumnName="idTime" />
+                <ScalarProperty Name="idRodada" ColumnName="idRodada" />
+                <ScalarProperty Name="idCampeonato" ColumnName="idCampeonato" />
+                <ScalarProperty Name="pontos" ColumnName="pontos" />
+                <ScalarProperty Name="saldoGols" ColumnName="saldoGols" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RODADA">
+            <EntityTypeMapping TypeName="CAMPEONATOSModel.RODADA">
+              <MappingFragment StoreEntitySet="RODADA">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idCampeonato" ColumnName="idCampeonato" />
+                <ScalarProperty Name="numeroRodada" ColumnName="numeroRodada" />
+                <ScalarProperty Name="dataRodada" ColumnName="dataRodada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIME">
+            <EntityTypeMapping TypeName="CAMPEONATOSModel.TIME">
+              <MappingFragment StoreEntitySet="TIME">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="historia" ColumnName="historia" />
+                <ScalarProperty Name="anoFundacao" ColumnName="anoFundacao" />
+                <ScalarProperty Name="quantidadeTorcedores" ColumnName="quantidadeTorcedores" />
+                <ScalarProperty Name="quantidadeTitulos" ColumnName="quantidadeTitulos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIME_CAMPEONATO">
+            <EntityTypeMapping TypeName="CAMPEONATOSModel.TIME_CAMPEONATO">
+              <MappingFragment StoreEntitySet="TIME_CAMPEONATO">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idTime" ColumnName="idTime" />
+                <ScalarProperty Name="idCampeonato" ColumnName="idCampeonato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="CAMPEONATOSModel.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="usuario1" ColumnName="usuario" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="dataNascimento" ColumnName="dataNascimento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

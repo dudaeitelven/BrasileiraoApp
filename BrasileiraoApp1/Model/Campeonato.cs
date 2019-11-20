@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BrasileiraoApp.Model.Classes
+namespace BrasileiraoApp.Model
 {
-    class Campeonato
+    public class Campeonato
     {
         private int id;
         private string descricao;
