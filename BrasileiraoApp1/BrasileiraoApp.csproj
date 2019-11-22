@@ -63,6 +63,11 @@
     <Compile Include="CAMPEONATO.cs">
       <DependentUpon>ModelEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSetCAMPEONATOS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetCAMPEONATOS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="JOGO.cs">
       <DependentUpon>ModelEntity.tt</DependentUpon>
     </Compile>
@@ -81,12 +86,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelEntity.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\Campeonato.cs" />
-    <Compile Include="Model\Jogo.cs" />
-    <Compile Include="Model\Resultado.cs" />
-    <Compile Include="Model\Rodada.cs" />
-    <Compile Include="Model\Time.cs" />
-    <Compile Include="Model\Usuario.cs" />
+    <Compile Include="Model\ValidarLogin.cs" />
     <Compile Include="RESULTADO.cs">
       <DependentUpon>ModelEntity.tt</DependentUpon>
     </Compile>
@@ -113,6 +113,12 @@
     </Compile>
     <Compile Include="View\FormAreaRestritaLogin.Designer.cs">
       <DependentUpon>FormAreaRestritaLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormCadastrarResultados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormCadastrarResultados.Designer.cs">
+      <DependentUpon>FormCadastrarResultados.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FormEstatistica.cs">
       <SubType>Form</SubType>
@@ -156,6 +162,9 @@
     <EmbeddedResource Include="View\FormAreaRestritaLogin.resx">
       <DependentUpon>FormAreaRestritaLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FormCadastrarResultados.resx">
+      <DependentUpon>FormCadastrarResultados.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormEstatistica.resx">
       <DependentUpon>FormEstatistica.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,6 +181,17 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelEntity.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="DataSetCAMPEONATOS.xsc">
+      <DependentUpon>DataSetCAMPEONATOS.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetCAMPEONATOS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCAMPEONATOS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetCAMPEONATOS.xss">
+      <DependentUpon>DataSetCAMPEONATOS.xsd</DependentUpon>
+    </None>
     <None Include="ModelEntity.edmx.diagram">
       <DependentUpon>ModelEntity.edmx</DependentUpon>
     </None>
@@ -190,7 +210,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Dao\" />
+    <Folder Include="DAO\" />
     <Folder Include="Imagens\" />
   </ItemGroup>
   <ItemGroup>

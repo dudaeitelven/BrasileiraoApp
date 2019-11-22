@@ -16,5 +16,11 @@ namespace BrasileiraoApp.View
         {
             InitializeComponent();
         }
+
+        private void btnResultadoRodadas_Click_1(object sender, EventArgs e)
+        {
+            FormCadastrarResultados cadastrarResultados = new FormCadastrarResultados();
+            cadastrarResultados.Show();
+        }
     }
 }

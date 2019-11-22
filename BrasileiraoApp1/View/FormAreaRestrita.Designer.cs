@@ -62,6 +62,7 @@
             this.btnResultadoRodadas.TabIndex = 3;
             this.btnResultadoRodadas.Text = "Resultado de rodadas";
             this.btnResultadoRodadas.UseVisualStyleBackColor = true;
+            this.btnResultadoRodadas.Click += new System.EventHandler(this.btnResultadoRodadas_Click_1);
             // 
             // FormAreaRestrita
             // 

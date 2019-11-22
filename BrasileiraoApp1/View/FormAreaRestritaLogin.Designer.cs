@@ -59,18 +59,18 @@
             // 
             this.labelMsg.BackColor = System.Drawing.SystemColors.Control;
             this.labelMsg.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelMsg.Location = new System.Drawing.Point(64, 110);
+            this.labelMsg.Location = new System.Drawing.Point(49, 124);
             this.labelMsg.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMsg.Name = "labelMsg";
             this.labelMsg.Size = new System.Drawing.Size(172, 14);
             this.labelMsg.TabIndex = 5;
             this.labelMsg.Text = "...";
-            this.labelMsg.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelSenha
             // 
             this.labelSenha.AutoSize = true;
-            this.labelSenha.Location = new System.Drawing.Point(22, 65);
+            this.labelSenha.Location = new System.Drawing.Point(11, 58);
             this.labelSenha.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSenha.Name = "labelSenha";
             this.labelSenha.Size = new System.Drawing.Size(41, 13);
@@ -80,7 +80,7 @@
             // labelUsuario
             // 
             this.labelUsuario.AutoSize = true;
-            this.labelUsuario.Location = new System.Drawing.Point(16, 42);
+            this.labelUsuario.Location = new System.Drawing.Point(5, 33);
             this.labelUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelUsuario.Name = "labelUsuario";
             this.labelUsuario.Size = new System.Drawing.Size(46, 13);
@@ -89,7 +89,7 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(87, 87);
+            this.buttonLogin.Location = new System.Drawing.Point(66, 99);
             this.buttonLogin.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(135, 23);
@@ -100,7 +100,7 @@
             // 
             // txtSenha
             // 
-            this.txtSenha.Location = new System.Drawing.Point(66, 63);
+            this.txtSenha.Location = new System.Drawing.Point(52, 56);
             this.txtSenha.Margin = new System.Windows.Forms.Padding(2);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.Size = new System.Drawing.Size(170, 20);
@@ -109,7 +109,7 @@
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(66, 40);
+            this.txtUsuario.Location = new System.Drawing.Point(52, 31);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(170, 20);

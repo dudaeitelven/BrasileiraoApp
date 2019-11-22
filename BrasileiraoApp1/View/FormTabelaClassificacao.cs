@@ -16,5 +16,16 @@ namespace BrasileiraoApp.View
         {
             InitializeComponent();
         }
+
+        private void FormTabelaClassificacao_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'dataSetCAMPEONATOS.RODADA' table. You can move, or remove it, as needed.
+            this.rODADATableAdapter.Fill(this.dataSetCAMPEONATOS.RODADA);
+            // TODO: This line of code loads data into the 'dataSetCAMPEONATOS.CAMPEONATO' table. You can move, or remove it, as needed.
+            this.cAMPEONATOTableAdapter.Fill(this.dataSetCAMPEONATOS.CAMPEONATO);
+            // TODO: This line of code loads data into the 'dataSetCAMPEONATOS.RESULTADO' table. You can move, or remove it, as needed.
+            this.rESULTADOTableAdapter.Fill(this.dataSetCAMPEONATOS.RESULTADO);
+
+        }
     }
 }

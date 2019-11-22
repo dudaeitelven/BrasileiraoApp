@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BrasileiraoApp.Model;
 
 namespace BrasileiraoApp.View
 {
@@ -19,8 +20,41 @@ namespace BrasileiraoApp.View
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            FormAreaRestrita areaRestrita = new FormAreaRestrita();
-            areaRestrita.Show();
+            ValidarLogin valida = new ValidarLogin();
+            bool liberado=false;
+            
+            USUARIO user = new USUARIO();
+            user.usuario1 = txtUsuario.Text;
+            user.senha = txtSenha.Text;
+
+            AtualizarMsgLogin();
+            liberado = valida.LiberarLogin(user);
+
+            if (liberado)
+            {
+                FormAreaRestrita areaRestrita = new FormAreaRestrita();
+                areaRestrita.Show();
+                AcertarAutenticacao();
+            }
+            else
+            {
+                FalharAutenticacao();
+            }
+        }
+
+        private void AtualizarMsgLogin()
+        {
+            labelMsg.Text = "Validando login, aguarde!";
+            labelMsg.ForeColor = Color.Green;
+        }
+        private void AcertarAutenticacao()
+        {
+            this.Hide();
+        }
+        private void FalharAutenticacao()
+        {
+            labelMsg.Text = "Login ou senha inválidos!";
+            labelMsg.ForeColor = Color.Red;
         }
     }
 }
