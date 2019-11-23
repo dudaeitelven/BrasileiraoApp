@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BrasileiraoApp.Model
 {
-    class FillGridRodadas
+    public class FillGridRodadas
     {
         private int resNumeroRodada;
         private string resDataRodada;

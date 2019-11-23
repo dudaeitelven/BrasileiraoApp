@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BrasileiraoApp.Model
 {
-    class FillComboCampeonato
+    public class FillComboCampeonato
     {
         public List<string> RetornarCampeonatos()
         {

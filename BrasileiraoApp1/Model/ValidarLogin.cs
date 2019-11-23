@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BrasileiraoApp.Model
 {
-    class ValidarLogin
+    public class ValidarLogin
     {
         public bool LiberarLogin(USUARIO user)
         {           

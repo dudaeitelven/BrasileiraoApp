@@ -42,6 +42,7 @@
             this.btnTimesCampeonatos.TabIndex = 1;
             this.btnTimesCampeonatos.Text = "Times e campeonatos";
             this.btnTimesCampeonatos.UseVisualStyleBackColor = true;
+            this.btnTimesCampeonatos.Click += new System.EventHandler(this.btnTimesCampeonatos_Click);
             // 
             // btnCampeonatoRodadas
             // 

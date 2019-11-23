@@ -22,5 +22,10 @@ namespace BrasileiraoApp.View
             FormCadastrarResultados cadastrarResultados = new FormCadastrarResultados();
             cadastrarResultados.Show();
         }
+
+        private void btnTimesCampeonatos_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
