@@ -23,18 +23,16 @@ public class Telas
     public void selecionaCampeonato()
     {
 
-        FillComboCampeonato teste = new FillComboCampeonato();
+        FillComboCampeonato fillCampeonatos = new FillComboCampeonato();
+        List<string> fillCampeonatosList = new List<string>();
 
-
-
-        List<string> fillCampeonatos = new List<string>();
-        //fillCampeonatos = fillCampeonatos.RetornarCampeonatos();
+        fillCampeonatosList = fillCampeonatos.RetornarCampeonatos();
 
         Console.WriteLine("Selecione o campeonato");
 
-        foreach (var lineListRodadas in fillCampeonatos)
+        foreach (var lineListRodadas in fillCampeonatosList)
         {
-            
+            Console.WriteLine(lineListRodadas);
         }
 
         //listar os campeonatos
