@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BrasileiraoApp.Model
+{
+    class FillComboRodadas
+    {
+        public List<int> RetornarRodadas(int idCampeonato)
+        {
+            List<int> fillRodadas = new List<int>();
+
+            using (CAMPEONATOSEntities context = new CAMPEONATOSEntities())
+            {
+                var query = from rodada in context.RODADA
+                            where rodada.idCampeonato == idCampeonato
+                            select rodada.numeroRodada;
+                return query.ToList();
+            }
+        }
+    }
+}
