@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,11 @@ namespace BrasileiraoApp.Model
         private string resDataRodada;
         private string resTimeCasa;
         private string resTimeVisitante;
+
+        public int ResNumeroRodada { get => resNumeroRodada; set => resNumeroRodada = value; }
+        public string ResDataRodada { get => resDataRodada; set => resDataRodada = value; }
+        public string ResTimeCasa { get => resTimeCasa; set => resTimeCasa = value; }
+        public string ResTimeVisitante { get => resTimeVisitante; set => resTimeVisitante = value; }
 
         public List<FillGridRodadas> RetornarTimesRodadas(int idCampeonato, int nroRodada)
         {

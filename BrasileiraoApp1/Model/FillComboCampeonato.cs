@@ -10,8 +10,6 @@ namespace BrasileiraoApp.Model
     {
         public List<string> RetornarCampeonatos()
         {
-            List<string> fillCampeonatos = new List<string>();
-
             using (CAMPEONATOSEntities context = new CAMPEONATOSEntities())
             {
                 var query = from camp in context.CAMPEONATO

@@ -140,13 +140,16 @@
             // 
             this.dataGridViewRodada.AllowUserToAddRows = false;
             this.dataGridViewRodada.AllowUserToDeleteRows = false;
-            this.dataGridViewRodada.AllowUserToOrderColumns = true;
+            this.dataGridViewRodada.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewRodada.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewRodada.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewRodada.Location = new System.Drawing.Point(13, 66);
+            this.dataGridViewRodada.Location = new System.Drawing.Point(12, 78);
             this.dataGridViewRodada.Name = "dataGridViewRodada";
             this.dataGridViewRodada.ReadOnly = true;
-            this.dataGridViewRodada.Size = new System.Drawing.Size(775, 372);
+            this.dataGridViewRodada.Size = new System.Drawing.Size(776, 360);
             this.dataGridViewRodada.TabIndex = 2;
+            this.dataGridViewRodada.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // FormRodadas
             // 

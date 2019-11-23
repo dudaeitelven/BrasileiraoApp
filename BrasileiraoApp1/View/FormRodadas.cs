@@ -53,9 +53,24 @@ namespace BrasileiraoApp.View
             FillGridRodadas fillGrid = new FillGridRodadas();
             List<FillGridRodadas> fillGridList = new List<FillGridRodadas>();
 
+            //Buscar todos os jogos da campeonato e rodada selecionado.
             fillGridList = fillGrid.RetornarTimesRodadas(Convert.ToInt32(cbCampeonato.SelectedValue), Convert.ToInt32(cbRodada.SelectedItem));
 
-            this.dataGridViewRodada.DataSource = fillGridList;
+            //Cria a grid em tempo de execução
+            dataGridViewRodada.DataSource = fillGridList;
+
+            //Redefinir o nome das colunas
+            dataGridViewRodada.Columns[0].HeaderText = "Numero rodada";
+            dataGridViewRodada.Columns[1].HeaderText = "Data rodada";
+            dataGridViewRodada.Columns[1].DefaultCellStyle.Format = "d";
+            dataGridViewRodada.Columns[2].HeaderText = "Time casa";
+            dataGridViewRodada.Columns[3].HeaderText = "Time visitante";
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
