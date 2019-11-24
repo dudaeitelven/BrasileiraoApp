@@ -22,6 +22,7 @@ namespace BrasileiraoApp.View
         {
             // TODO: This line of code loads data into the 'dataSetCAMPEONATOS.CAMPEONATO' table. You can move, or remove it, as needed.
             this.cAMPEONATOTableAdapter.Fill(this.dataSetCAMPEONATOS.CAMPEONATO);
+            cbCampeonato.SelectedIndex = -1;
         }
 
         private void cbCampeonato_SelectedIndexChanged(object sender, EventArgs e)

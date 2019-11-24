@@ -1,4 +1,5 @@
-﻿using BrasileiraoApp.View;
+﻿using BrasileiraoApp;
+using BrasileiraoApp.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,5 +48,9 @@ namespace BrasileiraoApp1
             this.Close();
         }
 
+        private void FormInicio_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

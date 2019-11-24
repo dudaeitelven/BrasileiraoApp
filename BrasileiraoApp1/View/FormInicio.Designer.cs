@@ -104,6 +104,7 @@
             this.Name = "FormInicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Campeonato master";
+            this.Load += new System.EventHandler(this.FormInicio_Load);
             this.ResumeLayout(false);
 
         }
