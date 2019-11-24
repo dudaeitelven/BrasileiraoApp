@@ -59,18 +59,12 @@ namespace BrasileiraoApp.View
             //Cria a grid em tempo de execução
             dataGridViewRodada.DataSource = fillGridList;
 
-            //Redefinir o nome das colunas
+            //Redefinir as colunas da grid em tempo de execução.
             dataGridViewRodada.Columns[0].HeaderText = "Numero rodada";
             dataGridViewRodada.Columns[1].HeaderText = "Data rodada";
             dataGridViewRodada.Columns[1].DefaultCellStyle.Format = "d";
             dataGridViewRodada.Columns[2].HeaderText = "Time casa";
             dataGridViewRodada.Columns[3].HeaderText = "Time visitante";
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }
