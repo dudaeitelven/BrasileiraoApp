@@ -46,5 +46,23 @@ namespace BrasileiraoApp.View
                 cbRodada.Items.Add(lineListRodadas.ToString());
             }
         }
+
+        private void cbRodada_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FillGridTabelaClassificacao fillGrid = new FillGridTabelaClassificacao();
+            List<FillGridTabelaClassificacao> fillGridList = new List<FillGridTabelaClassificacao>();
+
+            //Buscar classificação do campeonato e rodada selecionado.
+            fillGridList = fillGrid.RetornarClassificacaoRodada(Convert.ToInt32(cbCampeonato.SelectedValue), Convert.ToInt32(cbRodada.SelectedItem));
+
+            //Cria a grid em tempo de execução
+            dataGridViewTabelaClassifi.DataSource = fillGridList;
+
+            //Redefinir as colunas da grid em tempo de execução.
+            dataGridViewTabelaClassifi.Columns[0].HeaderText = "Numero rodada";
+            dataGridViewTabelaClassifi.Columns[1].HeaderText = "Time";
+            dataGridViewTabelaClassifi.Columns[2].HeaderText = "Pontos";
+            dataGridViewTabelaClassifi.Columns[3].HeaderText = "Saldo gols";
+        }
     }
 }
