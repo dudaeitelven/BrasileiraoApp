@@ -10,8 +10,6 @@ namespace BrasileiraoApp.Model
     {
         public List<int> RetornarRodadas(int idCampeonato)
         {
-            List<int> fillRodadas = new List<int>();
-
             using (CAMPEONATOSEntities context = new CAMPEONATOSEntities())
             {
                 var query = from rodada in context.RODADA

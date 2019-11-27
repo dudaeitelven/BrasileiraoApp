@@ -87,7 +87,9 @@
       <DependentUpon>ModelEntity.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\FillComboCampeonato.cs" />
+    <Compile Include="Model\FillComboEstatistica.cs" />
     <Compile Include="Model\FillComboRodadas.cs" />
+    <Compile Include="Model\FillGridEstatistica.cs" />
     <Compile Include="Model\FillGridTabelaClassificacao.cs" />
     <Compile Include="Model\FillGridRodadas.cs" />
     <Compile Include="Model\ValidarLogin.cs" />

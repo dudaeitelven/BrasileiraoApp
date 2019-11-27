@@ -13,11 +13,13 @@ namespace BrasileiraoApp.Model
         private string resTime;
         private int resPontos;
         private int resSaldoGols;
+        private int resTotalFaltas;
 
         public int ResNumeroRodada { get => resNumeroRodada; set => resNumeroRodada = value; }
         public string ResTime { get => resTime; set => resTime = value; }
         public int ResPontos { get => resPontos; set => resPontos = value; }
         public int ResSaldoGols { get => resSaldoGols; set => resSaldoGols = value; }
+        public int ResTotalFaltas { get => resTotalFaltas; set => resTotalFaltas = value; }
 
         public List<FillGridTabelaClassificacao> RetornarClassificacaoRodada(int idCampeonato, int nroRodada)
         {
@@ -34,6 +36,7 @@ namespace BrasileiraoApp.Model
                                 resTime = time.nome,
                                 resPontos = resultado.pontos,
                                 resSaldoGols = resultado.saldoGols
+                                //resTotalFaltas
                             };
 
                 return query.ToList();

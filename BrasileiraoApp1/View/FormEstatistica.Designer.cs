@@ -39,12 +39,14 @@
             this.cAMPEONATOTableAdapter = new BrasileiraoApp.DataSetCAMPEONATOSTableAdapters.CAMPEONATOTableAdapter();
             this.groupBoxEstatistica = new System.Windows.Forms.GroupBox();
             this.cbEstatistica = new System.Windows.Forms.ComboBox();
+            this.dataGridViewEstatisticas = new System.Windows.Forms.DataGridView();
             this.grRodada.SuspendLayout();
             this.grCampeonato.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cAMPEONATOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetCAMPEONATOS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetCAMPEONATOSBindingSource)).BeginInit();
             this.groupBoxEstatistica.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEstatisticas)).BeginInit();
             this.SuspendLayout();
             // 
             // grRodada
@@ -150,12 +152,29 @@
             this.cbEstatistica.Name = "cbEstatistica";
             this.cbEstatistica.Size = new System.Drawing.Size(187, 21);
             this.cbEstatistica.TabIndex = 0;
+            this.cbEstatistica.SelectedIndexChanged += new System.EventHandler(this.cbEstatistica_SelectedIndexChanged);
+            // 
+            // dataGridViewEstatisticas
+            // 
+            this.dataGridViewEstatisticas.AllowUserToAddRows = false;
+            this.dataGridViewEstatisticas.AllowUserToDeleteRows = false;
+            this.dataGridViewEstatisticas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewEstatisticas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewEstatisticas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEstatisticas.Location = new System.Drawing.Point(12, 78);
+            this.dataGridViewEstatisticas.Name = "dataGridViewEstatisticas";
+            this.dataGridViewEstatisticas.ReadOnly = true;
+            this.dataGridViewEstatisticas.Size = new System.Drawing.Size(776, 360);
+            this.dataGridViewEstatisticas.TabIndex = 7;
             // 
             // FormEstatistica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dataGridViewEstatisticas);
             this.Controls.Add(this.groupBoxEstatistica);
             this.Controls.Add(this.grRodada);
             this.Controls.Add(this.grCampeonato);
@@ -169,6 +188,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataSetCAMPEONATOS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetCAMPEONATOSBindingSource)).EndInit();
             this.groupBoxEstatistica.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEstatisticas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -184,5 +204,6 @@
         private DataSetCAMPEONATOSTableAdapters.CAMPEONATOTableAdapter cAMPEONATOTableAdapter;
         private System.Windows.Forms.GroupBox groupBoxEstatistica;
         private System.Windows.Forms.ComboBox cbEstatistica;
+        private System.Windows.Forms.DataGridView dataGridViewEstatisticas;
     }
 }
