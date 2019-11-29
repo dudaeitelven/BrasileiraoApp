@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CAMPEONATOSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CAMPEONATOSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CAMPEONATO">
           <Key>
             <PropertyRef Name="id" />
@@ -40,6 +40,7 @@
           <Property Name="idCampeonato" Type="int" Nullable="false" />
           <Property Name="pontos" Type="int" Nullable="false" />
           <Property Name="saldoGols" Type="int" Nullable="false" />
+          <Property Name="totalFaltas" Type="int" />
         </EntityType>
         <EntityType Name="RODADA">
           <Key>
@@ -248,8 +249,7 @@
             <End Role="TIME_CAMPEONATO" EntitySet="TIME_CAMPEONATO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CAMPEONATOSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -299,6 +299,7 @@
           <NavigationProperty Name="CAMPEONATO" Relationship="Self.FK_RESULTADO_ID_CAMPEONATO" FromRole="RESULTADO" ToRole="CAMPEONATO" />
           <NavigationProperty Name="RODADA" Relationship="Self.FK_RESULTADO_ID_RODADA" FromRole="RESULTADO" ToRole="RODADA" />
           <NavigationProperty Name="TIME" Relationship="Self.FK_RESULTADO_ID_TIME" FromRole="RESULTADO" ToRole="TIME" />
+          <Property Name="totalFaltas" Type="Int32" />
         </EntityType>
         <EntityType Name="RODADA">
           <Key>
@@ -552,6 +553,7 @@
           <EntitySetMapping Name="RESULTADO">
             <EntityTypeMapping TypeName="CAMPEONATOSModel.RESULTADO">
               <MappingFragment StoreEntitySet="RESULTADO">
+                <ScalarProperty Name="totalFaltas" ColumnName="totalFaltas" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idTime" ColumnName="idTime" />
                 <ScalarProperty Name="idRodada" ColumnName="idRodada" />

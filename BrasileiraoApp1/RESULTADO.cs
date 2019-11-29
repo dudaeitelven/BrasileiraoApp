@@ -20,6 +20,7 @@ namespace BrasileiraoApp
         public int idCampeonato { get; set; }
         public int pontos { get; set; }
         public int saldoGols { get; set; }
+        public Nullable<int> totalFaltas { get; set; }
     
         public virtual CAMPEONATO CAMPEONATO { get; set; }
         public virtual RODADA RODADA { get; set; }
