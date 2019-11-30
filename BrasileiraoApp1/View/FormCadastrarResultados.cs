@@ -48,5 +48,30 @@ namespace BrasileiraoApp.View
                 cbRodada.Items.Add(lineListRodadas.ToString());
             }
         }
+
+        private void cbRodada_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FillGridCadastrarResultados fillGrid = new FillGridCadastrarResultados();
+            List<FillGridCadastrarResultados> fillGridList = new List<FillGridCadastrarResultados>();
+
+            //Buscar todos os jogos da campeonato e rodada selecionado.
+            fillGridList = fillGrid.RetornarJogos(Convert.ToInt32(cbCampeonato.SelectedValue), Convert.ToInt32(cbRodada.SelectedItem));
+
+            //Cria a grid em tempo de execução
+            dataGridViewResultados.DataSource = fillGridList;
+
+            //Redefinir as colunas da grid em tempo de execução.
+            dataGridViewResultados.Columns[0].Visible = false;
+            dataGridViewResultados.Columns[1].Visible = false;
+            dataGridViewResultados.Columns[5].Visible = false;
+
+            dataGridViewResultados.Columns[2].HeaderText = "Time casa";
+            dataGridViewResultados.Columns[3].HeaderText = "Gols time casa";
+            dataGridViewResultados.Columns[4].HeaderText = "Faltas time casa";
+
+            dataGridViewResultados.Columns[6].HeaderText = "Time Visitante";
+            dataGridViewResultados.Columns[7].HeaderText = "Gols time visitante";
+            dataGridViewResultados.Columns[8].HeaderText = "Faltas time visitante";
+        }
     }
 }
