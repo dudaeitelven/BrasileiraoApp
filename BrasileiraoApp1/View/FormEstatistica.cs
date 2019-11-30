@@ -53,11 +53,48 @@ namespace BrasileiraoApp.View
 
             fillEstatisticasList = fillComboEstatistica.RetornarEstatisticas();
             cbEstatistica.DataSource = fillEstatisticasList;
+            cbEstatistica.SelectedIndex = -1;
+        }
+
+        private void cbRodada_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbEstatistica.SelectedIndex = -1;
         }
 
         private void cbEstatistica_SelectedIndexChanged(object sender, EventArgs e)
         {
+            FillGridTabelaEstatistica fillGridTabelaEstatistica = new FillGridTabelaEstatistica();
+            List<FillGridTabelaEstatistica> fillTabelaEstatistica = new List<FillGridTabelaEstatistica>();
+
+
+            //Pegar o id selecionado no combo estatistica.
+            int selectedIndex = Convert.ToInt32(cbEstatistica.SelectedIndex);
+
+            switch (selectedIndex)
+            {
+                case 0:
+                    fillTabelaEstatistica = fillGridTabelaEstatistica.RetornarEstatisticaMaisGols(Convert.ToInt32(cbCampeonato.SelectedValue), Convert.ToInt32(cbRodada.SelectedItem));
+                    break;
+                case 1:
+                    fillTabelaEstatistica = fillGridTabelaEstatistica.RetornarEstatisticaMenosGols(Convert.ToInt32(cbCampeonato.SelectedValue), Convert.ToInt32(cbRodada.SelectedItem));
+                    break;
+                case 2:
+                    fillTabelaEstatistica = fillGridTabelaEstatistica.RetornarEstatisticaMaisFaltas(Convert.ToInt32(cbCampeonato.SelectedValue), Convert.ToInt32(cbRodada.SelectedItem));
+                    break;
+                case 3:
+                    fillTabelaEstatistica = fillGridTabelaEstatistica.RetornarEstatisticaMenosFaltas(Convert.ToInt32(cbCampeonato.SelectedValue), Convert.ToInt32(cbRodada.SelectedItem));
+                    break;
+            }
+
+            //Cria a grid em tempo de execução
+            dataGridViewEstatisticas.DataSource = fillTabelaEstatistica;
+
+            //Redefinir as colunas da grid em tempo de execução.
+            dataGridViewEstatisticas.Columns[0].HeaderText = "Time";
+            dataGridViewEstatisticas.Columns[1].HeaderText = "Saldo gols";
+            dataGridViewEstatisticas.Columns[2].HeaderText = "Total faltas";
 
         }
+
     }
 }

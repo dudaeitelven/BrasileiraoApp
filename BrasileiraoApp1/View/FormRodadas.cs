@@ -62,9 +62,10 @@ namespace BrasileiraoApp.View
             //Redefinir as colunas da grid em tempo de execução.
             dataGridViewRodada.Columns[0].HeaderText = "Numero rodada";
             dataGridViewRodada.Columns[1].HeaderText = "Data rodada";
-            dataGridViewRodada.Columns[1].DefaultCellStyle.Format = "d";
             dataGridViewRodada.Columns[2].HeaderText = "Time casa";
             dataGridViewRodada.Columns[3].HeaderText = "Time visitante";
+
+            dataGridViewRodada.Columns[1].DefaultCellStyle.Format = "d";
         }
     }
 }

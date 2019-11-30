@@ -63,6 +63,7 @@ namespace BrasileiraoApp.View
             dataGridViewTabelaClassifi.Columns[1].HeaderText = "Time";
             dataGridViewTabelaClassifi.Columns[2].HeaderText = "Pontos";
             dataGridViewTabelaClassifi.Columns[3].HeaderText = "Saldo gols";
+            dataGridViewTabelaClassifi.Columns[4].HeaderText = "Total faltas";
         }
     }
 }

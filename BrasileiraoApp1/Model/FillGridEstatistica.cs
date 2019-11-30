@@ -29,7 +29,8 @@ namespace BrasileiraoApp.Model
                             select new FillGridTabelaEstatistica
                             {
                                 resTime = time.nome,
-                                resSaldoGols = resultado.saldoGols
+                                resSaldoGols = resultado.saldoGols,
+                                resTotalFaltas = resultado.totalFaltas
                             };
 
                 return query.ToList();
@@ -49,7 +50,8 @@ namespace BrasileiraoApp.Model
                             select new FillGridTabelaEstatistica
                             {
                                 resTime = time.nome,
-                                resSaldoGols = resultado.saldoGols
+                                resSaldoGols = resultado.saldoGols,
+                                resTotalFaltas = resultado.totalFaltas
                             };
 
                 return query.ToList();
@@ -65,11 +67,33 @@ namespace BrasileiraoApp.Model
                             join rodada in context.RODADA on resultado.idRodada equals rodada.id
                             join time in context.TIME on resultado.idTime equals time.id
                             where resultado.idCampeonato == idCampeonato && rodada.numeroRodada == nroRodada
-                            //orderby resultado.
+                            orderby resultado.totalFaltas descending
                             select new FillGridTabelaEstatistica
                             {
                                 resTime = time.nome,
-                                resSaldoGols = resultado.saldoGols
+                                resSaldoGols = resultado.saldoGols,
+                                resTotalFaltas = resultado.totalFaltas
+                            };
+
+                return query.ToList();
+
+            }
+        }
+
+        public List<FillGridTabelaEstatistica> RetornarEstatisticaMenosFaltas(int idCampeonato, int nroRodada)
+        {
+            using (CAMPEONATOSEntities context = new CAMPEONATOSEntities())
+            {
+                var query = from resultado in context.RESULTADO
+                            join rodada in context.RODADA on resultado.idRodada equals rodada.id
+                            join time in context.TIME on resultado.idTime equals time.id
+                            where resultado.idCampeonato == idCampeonato && rodada.numeroRodada == nroRodada
+                            orderby resultado.totalFaltas
+                            select new FillGridTabelaEstatistica
+                            {
+                                resTime = time.nome,
+                                resSaldoGols = resultado.saldoGols,
+                                resTotalFaltas = resultado.totalFaltas
                             };
 
                 return query.ToList();

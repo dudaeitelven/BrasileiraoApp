@@ -75,6 +75,7 @@
             this.cbRodada.Name = "cbRodada";
             this.cbRodada.Size = new System.Drawing.Size(187, 21);
             this.cbRodada.TabIndex = 0;
+            this.cbRodada.SelectedIndexChanged += new System.EventHandler(this.cbRodada_SelectedIndexChanged);
             // 
             // grCampeonato
             // 
