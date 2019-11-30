@@ -165,7 +165,7 @@
             this.Controls.Add(this.grCampeonato);
             this.Name = "FormCadastrarResultados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormCadastrarResultados";
+            this.Text = "Cadastrar resultados";
             this.Load += new System.EventHandler(this.FormCadastrarResultados_Load);
             ((System.ComponentModel.ISupportInitialize)(this.rODADABindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetCAMPEONATOS)).EndInit();

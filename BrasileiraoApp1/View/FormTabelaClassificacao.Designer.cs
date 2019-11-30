@@ -142,7 +142,7 @@
             this.Controls.Add(this.grCampeonato);
             this.Name = "FormTabelaClassificacao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Tabela de classificacao";
+            this.Text = "Tabela de classificação";
             this.Load += new System.EventHandler(this.FormTabelaClassificacao_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTabelaClassifi)).EndInit();
             this.grRodada.ResumeLayout(false);

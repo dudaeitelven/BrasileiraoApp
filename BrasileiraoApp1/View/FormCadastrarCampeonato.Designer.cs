@@ -215,7 +215,7 @@
             this.MinimumSize = new System.Drawing.Size(461, 433);
             this.Name = "FormCadastrarCampeonato";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormCadastrarCampeonato";
+            this.Text = "Cadastrar campeonato";
             this.groupBoxInfo.ResumeLayout(false);
             this.groupBoxComplemento.ResumeLayout(false);
             this.groupBoxComplemento.PerformLayout();

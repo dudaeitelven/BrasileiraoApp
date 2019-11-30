@@ -181,7 +181,7 @@
             this.Controls.Add(this.grCampeonato);
             this.Name = "FormEstatistica";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormEstatistica";
+            this.Text = "Estatísticas";
             this.Load += new System.EventHandler(this.FormEstatistica_Load);
             this.grRodada.ResumeLayout(false);
             this.grCampeonato.ResumeLayout(false);

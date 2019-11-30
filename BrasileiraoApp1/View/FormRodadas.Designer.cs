@@ -161,7 +161,7 @@
             this.Controls.Add(this.grCampeonato);
             this.Name = "FormRodadas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormRodadas";
+            this.Text = "Rodadas";
             this.Load += new System.EventHandler(this.FormRodadas_Load);
             this.grCampeonato.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cAMPEONATOBindingSource)).EndInit();

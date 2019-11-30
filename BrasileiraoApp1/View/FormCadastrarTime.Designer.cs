@@ -236,7 +236,7 @@
             this.MinimumSize = new System.Drawing.Size(461, 433);
             this.Name = "FormCadastrarTime";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormCadastrarTime";
+            this.Text = "Cadastrar time";
             this.groupBoxInfo.ResumeLayout(false);
             this.groupBoxComplemento.ResumeLayout(false);
             this.groupBoxComplemento.PerformLayout();

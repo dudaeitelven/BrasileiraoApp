@@ -17,12 +17,6 @@ namespace BrasileiraoApp.View
             InitializeComponent();
         }
 
-        private void btnResultadoRodadas_Click_1(object sender, EventArgs e)
-        {
-            FormCadastrarResultados cadastrarResultados = new FormCadastrarResultados();
-            cadastrarResultados.Show();
-        }
-
         private void btnTimesCampeonatos_Click(object sender, EventArgs e)
         {
             FormCadastrarTime cadastrarTime = new FormCadastrarTime();
@@ -35,9 +29,28 @@ namespace BrasileiraoApp.View
             cadastrarCampeonato.Show();
         }
 
+        private void buttonVincularTimes_Click(object sender, EventArgs e)
+        {
+            FormVincularTimes vincularTimes = new FormVincularTimes();
+            vincularTimes.Show();
+        }
+
+        private void buttonGerarRodadas_Click(object sender, EventArgs e)
+        {
+            FormGerarRodadas gerarRodadas = new FormGerarRodadas();
+            gerarRodadas.Show();
+        }
+
+        private void btnResultadoRodadas_Click_1(object sender, EventArgs e)
+        {
+            FormCadastrarResultados cadastrarResultados = new FormCadastrarResultados();
+            cadastrarResultados.Show();
+        }
+
         private void buttonSair_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
     }
 }

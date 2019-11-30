@@ -95,6 +95,7 @@
     <Compile Include="Model\FillGridTabelaClassificacao.cs" />
     <Compile Include="Model\FillGridRodadas.cs" />
     <Compile Include="Model\ValidarLogin.cs" />
+    <Compile Include="Model\VincularTimes.cs" />
     <Compile Include="RESULTADO.cs">
       <DependentUpon>ModelEntity.tt</DependentUpon>
     </Compile>
@@ -146,6 +147,12 @@
     <Compile Include="View\FormEstatistica.Designer.cs">
       <DependentUpon>FormEstatistica.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FormGerarRodadas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormGerarRodadas.Designer.cs">
+      <DependentUpon>FormGerarRodadas.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormInicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +172,12 @@
     </Compile>
     <Compile Include="View\FormTabelaClassificacao.Designer.cs">
       <DependentUpon>FormTabelaClassificacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormVincularTimes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormVincularTimes.Designer.cs">
+      <DependentUpon>FormVincularTimes.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -194,6 +207,9 @@
     <EmbeddedResource Include="View\FormEstatistica.resx">
       <DependentUpon>FormEstatistica.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FormGerarRodadas.resx">
+      <DependentUpon>FormGerarRodadas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormInicio.resx">
       <DependentUpon>FormInicio.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormTabelaClassificacao.resx">
       <DependentUpon>FormTabelaClassificacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormVincularTimes.resx">
+      <DependentUpon>FormVincularTimes.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="ModelEntity.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -236,7 +255,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DAO\" />
     <Folder Include="Imagens\" />
   </ItemGroup>
   <ItemGroup>
