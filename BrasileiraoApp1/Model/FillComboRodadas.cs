@@ -14,7 +14,9 @@ namespace BrasileiraoApp.Model
             {
                 var query = from rodada in context.RODADA
                             where rodada.idCampeonato == idCampeonato
+                            orderby rodada.numeroRodada
                             select rodada.numeroRodada;
+                            
                 return query.ToList();
             }
         }

@@ -32,7 +32,6 @@ public class Telas
             {
                 passou = false;
                 Console.WriteLine("Insira apenas números!");
-                //throw e;
             }
         }
         return opcao;
@@ -52,31 +51,7 @@ public class Telas
         return this.escolherOpcao();
     }
 
-    public void dadosCriarUsuario()
-    {
-        String dtNasc;
-        String email;
-        String usuario;
-        String senha;
-        
-        //USUARIO u = new USUARIO();
-
-        this.intro();
-        
-        Console.WriteLine("Informe sua data de nascimento:");
-        dtNasc = Console.ReadLine();
-
-        Console.WriteLine("Informe seu E-mail:");
-        email = Console.ReadLine();
-
-        Console.WriteLine("Informe seu nome de usuário:");
-        usuario = Console.ReadLine();
-
-        Console.WriteLine("Informe sua senha:");
-        senha = Console.ReadLine();
-    }
-
-    public Boolean dadosFazerLogin()
+    public void fazerLogin()
     {
         ValidarLogin valida = new ValidarLogin();
 
@@ -89,40 +64,33 @@ public class Telas
         Console.WriteLine("Informe sua senha:");
         senha = Console.ReadLine();
 
-        USUARIO user = new USUARIO(usuario, senha);
+        USUARIO user = new USUARIO();
+        user.usuario1 = usuario;
+        user.senha = senha;
+
         liberado = valida.LiberarLogin(user);
 
         if (liberado)
         {
-            //Logou
+            Console.Clear();
+            Console.WriteLine("Logado!");
+            this.areaRestrita();
         }
         else
         {
-            //Nao
+            Console.WriteLine("Usuário ou senha incorretos.");
         }
-
-        /*
-         fazer a verificacao no banco do usuario
-         logou = true;
-         
-         */
-
-
-
-        return logou;
     }
 
-    public Boolean login()
+    public void login()
     {
-        int op =1;
-        Boolean logado = false;
+        int op = 1;
 
         this.intro();
         
         Console.WriteLine("----------Área Restrita----------");
         Console.WriteLine();
-        Console.WriteLine("1 - Para criar usuário.");
-        Console.WriteLine("2 - Para fazer login.");
+        Console.WriteLine("1 - Para fazer login.");
         Console.WriteLine("0 - Para sair da área restrita.");
 
         while (op!=0)
@@ -131,10 +99,7 @@ public class Telas
             switch (op)
             {   
                 case 1:
-                    this.dadosCriarUsuario();
-                    break;
-                case 2:
-                    logado = this.dadosFazerLogin();
+                    this.fazerLogin();
                     break;
                 case 0:
                     break;
@@ -143,10 +108,11 @@ public class Telas
                     break;
             }
         }
-        return logado;
     }
     public void selecionaCampeonato()
     {
+        int i = 0;
+
         FillComboCampeonato fillCampeonatos = new FillComboCampeonato();
         List<string> fillCampeonatosList = new List<string>();
 
@@ -156,23 +122,25 @@ public class Telas
 
         foreach (var lineListCampeonato in fillCampeonatosList)
         {
-            Console.WriteLine(lineListCampeonato);
+            Console.WriteLine(i++ +" - " +lineListCampeonato);
         }
 
         this.escolherOpcao();
+        
+        
     }
-
-    
 
     public void selecionaRodadas()
     {
         FillComboRodadas rodadas = new FillComboRodadas();
-        List<String> FillComboRodadas = new List<String>();
+        List<int> FillComboRodadas = new List<int>();
 
         this.selecionaCampeonato();
 
         Console.WriteLine("Selecione a rodada:");
         //listar as rodadas
+
+        FillComboRodadas = rodadas.RetornarRodadas(1);
 
         foreach (var lineListRodadas in FillComboRodadas)
         {

@@ -23,16 +23,7 @@ namespace BrasileiraoConsoleApp
                 {
                     case 1:
                         Console.Clear();
-                        if (view.login() == true)
-                        {
-                            Console.Clear();
-                            view.areaRestrita();
-                        }
-                        else 
-                        {
-                            Console.Clear();
-                            Console.WriteLine("Não logou");
-                        }
+                        view.fazerLogin();
                         break;
                     case 2:
                         Console.Clear();
