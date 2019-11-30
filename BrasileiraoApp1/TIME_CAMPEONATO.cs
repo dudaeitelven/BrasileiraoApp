@@ -14,6 +14,12 @@ namespace BrasileiraoApp
     
     public partial class TIME_CAMPEONATO
     {
+        public TIME_CAMPEONATO(int idTime, int idCampeonato)
+        {
+            this.idTime = idTime;
+            this.idCampeonato = idCampeonato;
+        }
+
         public int id { get; set; }
         public int idTime { get; set; }
         public int idCampeonato { get; set; }

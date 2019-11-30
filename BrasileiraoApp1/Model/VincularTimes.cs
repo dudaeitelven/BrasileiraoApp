@@ -61,5 +61,14 @@ namespace BrasileiraoApp.Model
                 context.SaveChanges();
             }
         }
+
+        public void desvincularTimeCampeonato(TIME_CAMPEONATO timeCampeonato)
+        {
+            using (CAMPEONATOSEntities context = new CAMPEONATOSEntities())
+            {
+                context.TIME_CAMPEONATO.Remove(timeCampeonato);
+                context.SaveChanges();
+            }
+        }
     }
 }

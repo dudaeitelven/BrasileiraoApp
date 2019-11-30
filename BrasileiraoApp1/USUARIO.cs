@@ -14,12 +14,6 @@ namespace BrasileiraoApp
     
     public partial class USUARIO
     {
-        public USUARIO(string usuario1, string senha)
-        {
-            this.usuario1 = usuario1;
-            this.senha = senha;
-        }
-
         public int id { get; set; }
         public string usuario1 { get; set; }
         public string senha { get; set; }
