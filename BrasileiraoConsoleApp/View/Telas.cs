@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BrasileiraoApp;
 using BrasileiraoApp.Model;
 
 public class Telas
@@ -77,7 +78,9 @@ public class Telas
 
     public Boolean dadosFazerLogin()
     {
-        Boolean logou = false;
+        ValidarLogin valida = new ValidarLogin();
+
+        bool liberado = false;
         String usuario;
         String senha;
 
@@ -86,11 +89,25 @@ public class Telas
         Console.WriteLine("Informe sua senha:");
         senha = Console.ReadLine();
 
+        USUARIO user = new USUARIO(usuario, senha);
+        liberado = valida.LiberarLogin(user);
+
+        if (liberado)
+        {
+            //Logou
+        }
+        else
+        {
+            //Nao
+        }
+
         /*
          fazer a verificacao no banco do usuario
          logou = true;
          
          */
+
+
 
         return logou;
     }

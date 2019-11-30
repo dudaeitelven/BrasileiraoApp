@@ -23,9 +23,7 @@ namespace BrasileiraoApp.View
             ValidarLogin valida = new ValidarLogin();
             bool liberado=false;
             
-            USUARIO user = new USUARIO();
-            user.usuario1 = txtUsuario.Text;
-            user.senha = txtSenha.Text;
+            USUARIO user = new USUARIO(txtUsuario.Text, txtSenha.Text);
 
             AtualizarMsgLogin();
             liberado = valida.LiberarLogin(user);
