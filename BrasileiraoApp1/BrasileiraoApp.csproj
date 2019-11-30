@@ -86,7 +86,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelEntity.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\AtualizarTimeCampeonato.cs" />
     <Compile Include="Model\AtualizarResultados.cs" />
     <Compile Include="Model\CadastrarCampeonato.cs" />
     <Compile Include="Model\CadastrarTime.cs" />

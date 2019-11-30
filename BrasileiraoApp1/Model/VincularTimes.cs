@@ -52,5 +52,14 @@ namespace BrasileiraoApp.Model
                 return query.ToList();
             }
         }
+
+        public void vincularTimeCampeonato(TIME_CAMPEONATO timeCampeonato)
+        {
+            using (CAMPEONATOSEntities context = new CAMPEONATOSEntities())
+            {
+                context.TIME_CAMPEONATO.Add(timeCampeonato);
+                context.SaveChanges();
+            }
+        }
     }
 }
