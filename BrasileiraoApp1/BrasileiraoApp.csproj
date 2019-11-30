@@ -86,6 +86,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelEntity.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\CadastrarCampeonato.cs" />
+    <Compile Include="Model\CadastrarTime.cs" />
     <Compile Include="Model\FillComboCampeonato.cs" />
     <Compile Include="Model\FillComboEstatistica.cs" />
     <Compile Include="Model\FillComboRodadas.cs" />
@@ -120,11 +122,23 @@
     <Compile Include="View\FormAreaRestritaLogin.Designer.cs">
       <DependentUpon>FormAreaRestritaLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FormCadastrarCampeonato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormCadastrarCampeonato.Designer.cs">
+      <DependentUpon>FormCadastrarCampeonato.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormCadastrarResultados.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\FormCadastrarResultados.Designer.cs">
       <DependentUpon>FormCadastrarResultados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormCadastrarTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormCadastrarTime.Designer.cs">
+      <DependentUpon>FormCadastrarTime.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FormEstatistica.cs">
       <SubType>Form</SubType>
@@ -168,8 +182,14 @@
     <EmbeddedResource Include="View\FormAreaRestritaLogin.resx">
       <DependentUpon>FormAreaRestritaLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FormCadastrarCampeonato.resx">
+      <DependentUpon>FormCadastrarCampeonato.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormCadastrarResultados.resx">
       <DependentUpon>FormCadastrarResultados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormCadastrarTime.resx">
+      <DependentUpon>FormCadastrarTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormEstatistica.resx">
       <DependentUpon>FormEstatistica.cs</DependentUpon>

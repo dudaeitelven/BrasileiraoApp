@@ -28,24 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnTimesCampeonatos = new System.Windows.Forms.Button();
+            this.btnCadastarTime = new System.Windows.Forms.Button();
             this.btnCampeonatoRodadas = new System.Windows.Forms.Button();
             this.btnResultadoRodadas = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnCadastrarCampeonato = new System.Windows.Forms.Button();
+            this.buttonSair = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnTimesCampeonatos
+            // btnCadastarTime
             // 
-            this.btnTimesCampeonatos.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnTimesCampeonatos.Location = new System.Drawing.Point(210, 93);
-            this.btnTimesCampeonatos.Name = "btnTimesCampeonatos";
-            this.btnTimesCampeonatos.Size = new System.Drawing.Size(180, 40);
-            this.btnTimesCampeonatos.TabIndex = 1;
-            this.btnTimesCampeonatos.Text = "Times e campeonatos";
-            this.btnTimesCampeonatos.UseVisualStyleBackColor = true;
-            this.btnTimesCampeonatos.Click += new System.EventHandler(this.btnTimesCampeonatos_Click);
+            this.btnCadastarTime.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCadastarTime.Location = new System.Drawing.Point(88, 12);
+            this.btnCadastarTime.Name = "btnCadastarTime";
+            this.btnCadastarTime.Size = new System.Drawing.Size(180, 40);
+            this.btnCadastarTime.TabIndex = 1;
+            this.btnCadastarTime.Text = "Times";
+            this.btnCadastarTime.UseVisualStyleBackColor = true;
+            this.btnCadastarTime.Click += new System.EventHandler(this.btnTimesCampeonatos_Click);
             // 
             // btnCampeonatoRodadas
             // 
@@ -72,7 +74,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(113, 105);
+            this.label1.Location = new System.Drawing.Point(12, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 16);
             this.label1.TabIndex = 4;
@@ -98,17 +100,41 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Manutenção";
             // 
+            // btnCadastrarCampeonato
+            // 
+            this.btnCadastrarCampeonato.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCadastrarCampeonato.Location = new System.Drawing.Point(274, 12);
+            this.btnCadastrarCampeonato.Name = "btnCadastrarCampeonato";
+            this.btnCadastrarCampeonato.Size = new System.Drawing.Size(180, 40);
+            this.btnCadastrarCampeonato.TabIndex = 7;
+            this.btnCadastrarCampeonato.Text = "Campeonato";
+            this.btnCadastrarCampeonato.UseVisualStyleBackColor = true;
+            this.btnCadastrarCampeonato.Click += new System.EventHandler(this.btnCadastrarCampeonato_Click);
+            // 
+            // buttonSair
+            // 
+            this.buttonSair.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonSair.Location = new System.Drawing.Point(210, 298);
+            this.buttonSair.Name = "buttonSair";
+            this.buttonSair.Size = new System.Drawing.Size(180, 40);
+            this.buttonSair.TabIndex = 8;
+            this.buttonSair.Text = "Sair";
+            this.buttonSair.UseVisualStyleBackColor = true;
+            this.buttonSair.Click += new System.EventHandler(this.buttonSair_Click);
+            // 
             // FormAreaRestrita
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(606, 372);
+            this.Controls.Add(this.buttonSair);
+            this.Controls.Add(this.btnCadastrarCampeonato);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnResultadoRodadas);
             this.Controls.Add(this.btnCampeonatoRodadas);
-            this.Controls.Add(this.btnTimesCampeonatos);
+            this.Controls.Add(this.btnCadastarTime);
             this.Name = "FormAreaRestrita";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAreaRestrita";
@@ -119,11 +145,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnTimesCampeonatos;
+        private System.Windows.Forms.Button btnCadastarTime;
         private System.Windows.Forms.Button btnCampeonatoRodadas;
         private System.Windows.Forms.Button btnResultadoRodadas;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnCadastrarCampeonato;
+        private System.Windows.Forms.Button buttonSair;
     }
 }

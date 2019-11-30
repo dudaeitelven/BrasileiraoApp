@@ -22,7 +22,15 @@ namespace BrasileiraoApp
             this.RODADA = new HashSet<RODADA>();
             this.TIME_CAMPEONATO = new HashSet<TIME_CAMPEONATO>();
         }
-    
+
+        public CAMPEONATO(string descricao, string historia, int ano, int quantidadeTimes)
+        {
+            this.descricao = descricao;
+            this.historia = historia;
+            this.ano = ano;
+            this.quantidadeTimes = quantidadeTimes;
+        }
+
         public int id { get; set; }
         public string descricao { get; set; }
         public string historia { get; set; }

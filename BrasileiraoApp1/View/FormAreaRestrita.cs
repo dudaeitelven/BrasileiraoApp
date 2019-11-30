@@ -25,7 +25,19 @@ namespace BrasileiraoApp.View
 
         private void btnTimesCampeonatos_Click(object sender, EventArgs e)
         {
+            FormCadastrarTime cadastrarTime = new FormCadastrarTime();
+            cadastrarTime.Show();
+        }
 
+        private void btnCadastrarCampeonato_Click(object sender, EventArgs e)
+        {
+            FormCadastrarCampeonato cadastrarCampeonato = new FormCadastrarCampeonato();
+            cadastrarCampeonato.Show();
+        }
+
+        private void buttonSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
