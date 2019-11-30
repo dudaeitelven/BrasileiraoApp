@@ -28,6 +28,7 @@ namespace BrasileiraoApp.Model
                             join timeCasa in context.TIME on jogo.idTimeCasa equals timeCasa.id
                             join timeVisitante in context.TIME on jogo.idTimeVisitante equals timeVisitante.id
                             where jogo.idCampeonato == idCampeonato && rodada.numeroRodada == nroRodada
+                            orderby rodada.numeroRodada
                             select new FillGridRodadas
                             {
                                 resNumeroRodada = rodada.numeroRodada,
