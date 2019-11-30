@@ -10,6 +10,7 @@ namespace BrasileiraoApp.Model
     {
         private int resIdTime;
         private string resTime;
+    
 
         public string ResTime { get => resTime; set => resTime = value; }
         public int ResIdTime { get => resIdTime; set => resIdTime = value; }
@@ -66,8 +67,16 @@ namespace BrasileiraoApp.Model
         {
             using (CAMPEONATOSEntities context = new CAMPEONATOSEntities())
             {
-                context.TIME_CAMPEONATO.Remove(timeCampeonato);
-                context.SaveChanges();
+                //var query = (from removeTimeCampeonato in context.TIME_CAMPEONATO
+                //             where removeTimeCampeonato.idTime == timeCampeonato.idTime
+                //                   && removeTimeCampeonato.idCampeonato == timeCampeonato.id
+                //             select removeTimeCampeonato
+                //           ).First();
+
+                //Console.WriteLine("");
+
+                //context.TIME_CAMPEONATO.Remove(query.First());
+               // context.SaveChanges();
             }
         }
     }

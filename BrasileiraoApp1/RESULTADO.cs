@@ -14,6 +14,16 @@ namespace BrasileiraoApp
     
     public partial class RESULTADO
     {
+        public RESULTADO(int idTime, int idRodada, int idCampeonato, int pontos, int saldoGols, int totalFaltas)
+        {
+            this.idTime = idTime;
+            this.idRodada = idRodada;
+            this.idCampeonato = idCampeonato;
+            this.pontos = pontos;
+            this.saldoGols = saldoGols;
+            this.totalFaltas = totalFaltas;
+        }
+
         public int id { get; set; }
         public int idTime { get; set; }
         public int idRodada { get; set; }

@@ -14,15 +14,6 @@ namespace BrasileiraoApp
     
     public partial class CAMPEONATO
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CAMPEONATO()
-        {
-            this.JOGO = new HashSet<JOGO>();
-            this.RESULTADO = new HashSet<RESULTADO>();
-            this.RODADA = new HashSet<RODADA>();
-            this.TIME_CAMPEONATO = new HashSet<TIME_CAMPEONATO>();
-        }
-
         public CAMPEONATO(string descricao, string historia, int ano, int quantidadeTimes)
         {
             this.descricao = descricao;
@@ -31,6 +22,8 @@ namespace BrasileiraoApp
             this.quantidadeTimes = quantidadeTimes;
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    
         public int id { get; set; }
         public string descricao { get; set; }
         public string historia { get; set; }

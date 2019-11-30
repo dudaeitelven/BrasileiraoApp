@@ -92,6 +92,17 @@ namespace BrasileiraoApp.View
                 AtualizarResultados atualizarResultados = 
                     new AtualizarResultados(idResultado, golsTimeCasa, faltasTimeCasa, golsTimeVisitante, faltasTimeVisitante);
                 atualizarResultados.salvarResultados(atualizarResultados);
+
+                AtualizarTabelaClassificacao atualizarTabelaClassificacao = new AtualizarTabelaClassificacao();
+
+                //Não fazer isso, não esta pronto!
+                for (int i = 1; i <= Convert.ToInt32(cbRodada.SelectedItem); i++)
+                {
+                    atualizarTabelaClassificacao.retornarDadosTimeCasa(Convert.ToInt32(cbCampeonato.SelectedValue), i, Convert.ToInt32(dataGridViewResultados.Rows[e.RowIndex].Cells[1].Value.ToString()));
+                    atualizarTabelaClassificacao.retornarDadosTimeCasa(Convert.ToInt32(cbCampeonato.SelectedValue), i, Convert.ToInt32(dataGridViewResultados.Rows[e.RowIndex].Cells[5].Value.ToString()));
+                }
+                //Não fazer isso, não esta pronto!
+
             }
 
         }

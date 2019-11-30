@@ -10,11 +10,11 @@ namespace BrasileiraoApp.Model
     public class FillGridTabelaEstatistica
     {
         private string resTime;
-        private int resSaldoGols;
+        private float resSaldoGols;
         private int resTotalFaltas;
 
         public string ResTime { get => resTime; set => resTime = value; }
-        public int ResSaldoGols { get => resSaldoGols; set => resSaldoGols = value; }
+        public float ResSaldoGols { get => resSaldoGols; set => resSaldoGols = value; }
         public int ResTotalFaltas { get => resTotalFaltas; set => resTotalFaltas = value; }
 
         public List<FillGridTabelaEstatistica> RetornarEstatisticaMaisGols(int idCampeonato, int nroRodada)

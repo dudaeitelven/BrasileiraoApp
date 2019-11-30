@@ -39,8 +39,8 @@
           <Property Name="idRodada" Type="int" Nullable="false" />
           <Property Name="idCampeonato" Type="int" Nullable="false" />
           <Property Name="pontos" Type="int" Nullable="false" />
-          <Property Name="saldoGols" Type="int" Nullable="false" />
-          <Property Name="totalFaltas" Type="int" />
+          <Property Name="saldoGols" Type="float" Nullable="false" />
+          <Property Name="totalFaltas" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="RODADA">
           <Key>
@@ -128,42 +128,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RESULTADO_ID_CAMPEONATO">
-          <End Role="CAMPEONATO" Type="Self.CAMPEONATO" Multiplicity="1" />
-          <End Role="RESULTADO" Type="Self.RESULTADO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CAMPEONATO">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="RESULTADO">
-              <PropertyRef Name="idCampeonato" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RESULTADO_ID_RODADA">
-          <End Role="RODADA" Type="Self.RODADA" Multiplicity="1" />
-          <End Role="RESULTADO" Type="Self.RESULTADO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="RODADA">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="RESULTADO">
-              <PropertyRef Name="idRodada" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RESULTADO_ID_TIME">
-          <End Role="TIME" Type="Self.TIME" Multiplicity="1" />
-          <End Role="RESULTADO" Type="Self.RESULTADO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIME">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="RESULTADO">
-              <PropertyRef Name="idTime" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_RODADA_ID_CAMPEONATO">
           <End Role="CAMPEONATO" Type="Self.CAMPEONATO" Multiplicity="1" />
           <End Role="RODADA" Type="Self.RODADA" Multiplicity="*" />
@@ -223,18 +187,6 @@
           <AssociationSet Name="FK_JOGO_ID_TIME_VISITANTE" Association="Self.FK_JOGO_ID_TIME_VISITANTE">
             <End Role="TIME" EntitySet="TIME" />
             <End Role="JOGO" EntitySet="JOGO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RESULTADO_ID_CAMPEONATO" Association="Self.FK_RESULTADO_ID_CAMPEONATO">
-            <End Role="CAMPEONATO" EntitySet="CAMPEONATO" />
-            <End Role="RESULTADO" EntitySet="RESULTADO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RESULTADO_ID_RODADA" Association="Self.FK_RESULTADO_ID_RODADA">
-            <End Role="RODADA" EntitySet="RODADA" />
-            <End Role="RESULTADO" EntitySet="RESULTADO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RESULTADO_ID_TIME" Association="Self.FK_RESULTADO_ID_TIME">
-            <End Role="TIME" EntitySet="TIME" />
-            <End Role="RESULTADO" EntitySet="RESULTADO" />
           </AssociationSet>
           <AssociationSet Name="FK_RODADA_ID_CAMPEONATO" Association="Self.FK_RODADA_ID_CAMPEONATO">
             <End Role="CAMPEONATO" EntitySet="CAMPEONATO" />
@@ -299,7 +251,7 @@
           <NavigationProperty Name="CAMPEONATO" Relationship="Self.FK_RESULTADO_ID_CAMPEONATO" FromRole="RESULTADO" ToRole="CAMPEONATO" />
           <NavigationProperty Name="RODADA" Relationship="Self.FK_RESULTADO_ID_RODADA" FromRole="RESULTADO" ToRole="RODADA" />
           <NavigationProperty Name="TIME" Relationship="Self.FK_RESULTADO_ID_TIME" FromRole="RESULTADO" ToRole="TIME" />
-          <Property Name="totalFaltas" Type="Int32" />
+          <Property Name="totalFaltas" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="RODADA">
           <Key>
