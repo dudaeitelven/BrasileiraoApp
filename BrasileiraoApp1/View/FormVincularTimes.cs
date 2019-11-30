@@ -22,15 +22,45 @@ namespace BrasileiraoApp.View
         {
             this.cAMPEONATOTableAdapter.Fill(this.dataSetCAMPEONATOS.CAMPEONATO);
             cbCampeonato.SelectedIndex = -1;
+
+            dataGridViewVinculados.DataSource = null;
+            dataGridViewNaoVinculados.DataSource = null;
         }
 
         private void cbCampeonato_SelectedIndexChanged(object sender, EventArgs e)
         {
             VincularTimes vincularTimes = new VincularTimes();
+            List<VincularTimes> timesVinculados = new List<VincularTimes>();
+            List<VincularTimes> timesNaoVinculados = new List<VincularTimes>();
 
-            //Pegar o id selecionado no combo campeonato.
-            //Object selectedValue = cbCampeonato.SelectedValue;
-            //vincularTimes.CarregarVinculados()
+            //Buscar times vinculados ao campeonato
+            timesVinculados = vincularTimes.CarregarVinculados(Convert.ToInt32(cbCampeonato.SelectedValue));
+            dataGridViewVinculados.DataSource = timesVinculados;
+
+            //Buscar times não vinculados ao campeonato
+            timesNaoVinculados = vincularTimes.CarregarNaoVinculados(Convert.ToInt32(cbCampeonato.SelectedValue));
+            dataGridViewNaoVinculados.DataSource = timesNaoVinculados;
+
+            //Redefinir as colunas da grid em tempo de execução.
+            dataGridViewVinculados.Columns[1].Visible = false;
+            dataGridViewVinculados.Columns[0].HeaderText = "Time";
+            dataGridViewVinculados.Columns[0].ReadOnly = true;
+            dataGridViewVinculados.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            dataGridViewNaoVinculados.Columns[1].Visible = false;
+            dataGridViewNaoVinculados.Columns[0].HeaderText = "Time";
+            dataGridViewNaoVinculados.Columns[0].ReadOnly = true;
+            dataGridViewNaoVinculados.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        }
+
+        private void buttonVincular_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonDesvincular_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

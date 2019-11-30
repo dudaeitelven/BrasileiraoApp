@@ -38,8 +38,10 @@ namespace BrasileiraoApp.Model
             using (CAMPEONATOSEntities context = new CAMPEONATOSEntities())
             {
                 var query = from time in context.TIME
-                            join timeCampeonato in context.TIME_CAMPEONATO on time.id equals timeCampeonato.idTime
-                            where timeCampeonato.idCampeonato == idCampeonato
+                            where !(
+                                from timeCampeonato in context.TIME_CAMPEONATO
+                                where timeCampeonato.idCampeonato == idCampeonato
+                                select timeCampeonato.idTime).Contains(time.id)
                             orderby time.nome
                             select new VincularTimes
                             {
@@ -48,7 +50,6 @@ namespace BrasileiraoApp.Model
                             };
 
                 return query.ToList();
-
             }
         }
     }

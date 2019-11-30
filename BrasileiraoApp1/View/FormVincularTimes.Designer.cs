@@ -126,6 +126,7 @@
             this.buttonVincular.TabIndex = 4;
             this.buttonVincular.Text = ">>>";
             this.buttonVincular.UseVisualStyleBackColor = true;
+            this.buttonVincular.Click += new System.EventHandler(this.buttonVincular_Click);
             // 
             // buttonDesvincular
             // 
@@ -136,6 +137,7 @@
             this.buttonDesvincular.TabIndex = 5;
             this.buttonDesvincular.Text = "<<<";
             this.buttonDesvincular.UseVisualStyleBackColor = true;
+            this.buttonDesvincular.Click += new System.EventHandler(this.buttonDesvincular_Click);
             // 
             // FormVincularTimes
             // 

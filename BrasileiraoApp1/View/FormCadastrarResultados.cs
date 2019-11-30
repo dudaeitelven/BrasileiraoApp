@@ -65,6 +65,9 @@ namespace BrasileiraoApp.View
             dataGridViewResultados.Columns[1].Visible = false;
             dataGridViewResultados.Columns[5].Visible = false;
 
+            dataGridViewResultados.Columns[2].ReadOnly = true;
+            dataGridViewResultados.Columns[6].ReadOnly = true;
+
             dataGridViewResultados.Columns[2].HeaderText = "Time casa";
             dataGridViewResultados.Columns[3].HeaderText = "Gols time casa";
             dataGridViewResultados.Columns[4].HeaderText = "Faltas time casa";
@@ -72,6 +75,25 @@ namespace BrasileiraoApp.View
             dataGridViewResultados.Columns[6].HeaderText = "Time Visitante";
             dataGridViewResultados.Columns[7].HeaderText = "Gols time visitante";
             dataGridViewResultados.Columns[8].HeaderText = "Faltas time visitante";
+        }
+
+        private void dataGridViewResultados_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridViewResultados.CurrentRow != null)
+            {
+                int idResultado = int.Parse(dataGridViewResultados.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+                int golsTimeCasa = int.Parse(dataGridViewResultados.Rows[e.RowIndex].Cells[3].Value.ToString());
+                int faltasTimeCasa = int.Parse(dataGridViewResultados.Rows[e.RowIndex].Cells[4].Value.ToString());
+
+                int golsTimeVisitante = int.Parse(dataGridViewResultados.Rows[e.RowIndex].Cells[7].Value.ToString());
+                int faltasTimeVisitante = int.Parse(dataGridViewResultados.Rows[e.RowIndex].Cells[8].Value.ToString());
+
+                AtualizarResultados atualizarResultados = 
+                    new AtualizarResultados(idResultado, golsTimeCasa, faltasTimeCasa, golsTimeVisitante, faltasTimeVisitante);
+                atualizarResultados.salvarResultados(atualizarResultados);
+            }
+
         }
     }
 }

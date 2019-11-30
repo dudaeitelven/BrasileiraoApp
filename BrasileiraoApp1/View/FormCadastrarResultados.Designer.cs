@@ -84,9 +84,9 @@
             this.dataGridViewResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewResultados.Location = new System.Drawing.Point(12, 78);
             this.dataGridViewResultados.Name = "dataGridViewResultados";
-            this.dataGridViewResultados.ReadOnly = true;
             this.dataGridViewResultados.Size = new System.Drawing.Size(776, 360);
             this.dataGridViewResultados.TabIndex = 5;
+            this.dataGridViewResultados.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewResultados_CellValueChanged);
             // 
             // grRodada
             // 
