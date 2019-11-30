@@ -31,18 +31,18 @@
             this.components = new System.ComponentModel.Container();
             this.grCampeonato = new System.Windows.Forms.GroupBox();
             this.cbCampeonato = new System.Windows.Forms.ComboBox();
-            this.dataSetCAMPEONATOS = new BrasileiraoApp.DataSetCAMPEONATOS();
-            this.dataSetCAMPEONATOSBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cAMPEONATOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSetCAMPEONATOSBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSetCAMPEONATOS = new BrasileiraoApp.DataSetCAMPEONATOS();
             this.cAMPEONATOTableAdapter = new BrasileiraoApp.DataSetCAMPEONATOSTableAdapters.CAMPEONATOTableAdapter();
             this.dataGridViewNaoVinculados = new System.Windows.Forms.DataGridView();
             this.dataGridViewVinculados = new System.Windows.Forms.DataGridView();
             this.buttonVincular = new System.Windows.Forms.Button();
             this.buttonDesvincular = new System.Windows.Forms.Button();
             this.grCampeonato.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetCAMPEONATOS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetCAMPEONATOSBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cAMPEONATOBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetCAMPEONATOSBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetCAMPEONATOS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNaoVinculados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVinculados)).BeginInit();
             this.SuspendLayout();
@@ -78,20 +78,20 @@
             this.cbCampeonato.ValueMember = "id";
             this.cbCampeonato.SelectedIndexChanged += new System.EventHandler(this.cbCampeonato_SelectedIndexChanged);
             // 
-            // dataSetCAMPEONATOS
+            // cAMPEONATOBindingSource
             // 
-            this.dataSetCAMPEONATOS.DataSetName = "DataSetCAMPEONATOS";
-            this.dataSetCAMPEONATOS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.cAMPEONATOBindingSource.DataMember = "CAMPEONATO";
+            this.cAMPEONATOBindingSource.DataSource = this.dataSetCAMPEONATOSBindingSource;
             // 
             // dataSetCAMPEONATOSBindingSource
             // 
             this.dataSetCAMPEONATOSBindingSource.DataSource = this.dataSetCAMPEONATOS;
             this.dataSetCAMPEONATOSBindingSource.Position = 0;
             // 
-            // cAMPEONATOBindingSource
+            // dataSetCAMPEONATOS
             // 
-            this.cAMPEONATOBindingSource.DataMember = "CAMPEONATO";
-            this.cAMPEONATOBindingSource.DataSource = this.dataSetCAMPEONATOSBindingSource;
+            this.dataSetCAMPEONATOS.DataSetName = "DataSetCAMPEONATOS";
+            this.dataSetCAMPEONATOS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // cAMPEONATOTableAdapter
             // 
@@ -99,6 +99,8 @@
             // 
             // dataGridViewNaoVinculados
             // 
+            this.dataGridViewNaoVinculados.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridViewNaoVinculados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewNaoVinculados.Location = new System.Drawing.Point(13, 65);
             this.dataGridViewNaoVinculados.Name = "dataGridViewNaoVinculados";
@@ -107,6 +109,8 @@
             // 
             // dataGridViewVinculados
             // 
+            this.dataGridViewVinculados.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewVinculados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewVinculados.Location = new System.Drawing.Point(444, 65);
             this.dataGridViewVinculados.Name = "dataGridViewVinculados";
@@ -115,6 +119,7 @@
             // 
             // buttonVincular
             // 
+            this.buttonVincular.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonVincular.Location = new System.Drawing.Point(363, 200);
             this.buttonVincular.Name = "buttonVincular";
             this.buttonVincular.Size = new System.Drawing.Size(75, 41);
@@ -124,6 +129,7 @@
             // 
             // buttonDesvincular
             // 
+            this.buttonDesvincular.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonDesvincular.Location = new System.Drawing.Point(363, 260);
             this.buttonDesvincular.Name = "buttonDesvincular";
             this.buttonDesvincular.Size = new System.Drawing.Size(75, 41);
@@ -146,9 +152,9 @@
             this.Text = "Vincular times";
             this.Load += new System.EventHandler(this.FormVincularTimes_Load);
             this.grCampeonato.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetCAMPEONATOS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSetCAMPEONATOSBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cAMPEONATOBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetCAMPEONATOSBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetCAMPEONATOS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNaoVinculados)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVinculados)).EndInit();
             this.ResumeLayout(false);

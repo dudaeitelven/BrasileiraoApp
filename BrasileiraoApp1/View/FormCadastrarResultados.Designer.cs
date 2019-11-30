@@ -34,7 +34,7 @@
             this.cAMPEONATOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cAMPEONATOTableAdapter = new BrasileiraoApp.DataSetCAMPEONATOSTableAdapters.CAMPEONATOTableAdapter();
             this.rODADATableAdapter = new BrasileiraoApp.DataSetCAMPEONATOSTableAdapters.RODADATableAdapter();
-            this.dataGridViewRodada = new System.Windows.Forms.DataGridView();
+            this.dataGridViewResultados = new System.Windows.Forms.DataGridView();
             this.grRodada = new System.Windows.Forms.GroupBox();
             this.cbRodada = new System.Windows.Forms.ComboBox();
             this.grCampeonato = new System.Windows.Forms.GroupBox();
@@ -44,7 +44,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.rODADABindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetCAMPEONATOS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cAMPEONATOBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRodada)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).BeginInit();
             this.grRodada.SuspendLayout();
             this.grCampeonato.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.jOGOBindingSource)).BeginInit();
@@ -73,20 +73,20 @@
             // 
             this.rODADATableAdapter.ClearBeforeFill = true;
             // 
-            // dataGridViewRodada
+            // dataGridViewResultados
             // 
-            this.dataGridViewRodada.AllowUserToAddRows = false;
-            this.dataGridViewRodada.AllowUserToDeleteRows = false;
-            this.dataGridViewRodada.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridViewResultados.AllowUserToAddRows = false;
+            this.dataGridViewResultados.AllowUserToDeleteRows = false;
+            this.dataGridViewResultados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewRodada.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewRodada.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewRodada.Location = new System.Drawing.Point(12, 78);
-            this.dataGridViewRodada.Name = "dataGridViewRodada";
-            this.dataGridViewRodada.ReadOnly = true;
-            this.dataGridViewRodada.Size = new System.Drawing.Size(776, 360);
-            this.dataGridViewRodada.TabIndex = 5;
+            this.dataGridViewResultados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewResultados.Location = new System.Drawing.Point(12, 78);
+            this.dataGridViewResultados.Name = "dataGridViewResultados";
+            this.dataGridViewResultados.ReadOnly = true;
+            this.dataGridViewResultados.Size = new System.Drawing.Size(776, 360);
+            this.dataGridViewResultados.TabIndex = 5;
             // 
             // grRodada
             // 
@@ -160,7 +160,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridViewRodada);
+            this.Controls.Add(this.dataGridViewResultados);
             this.Controls.Add(this.grRodada);
             this.Controls.Add(this.grCampeonato);
             this.Name = "FormCadastrarResultados";
@@ -170,7 +170,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.rODADABindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetCAMPEONATOS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cAMPEONATOBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRodada)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).EndInit();
             this.grRodada.ResumeLayout(false);
             this.grCampeonato.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.jOGOBindingSource)).EndInit();
@@ -184,7 +184,7 @@
         private DataSetCAMPEONATOSTableAdapters.CAMPEONATOTableAdapter cAMPEONATOTableAdapter;
         private System.Windows.Forms.BindingSource rODADABindingSource;
         private DataSetCAMPEONATOSTableAdapters.RODADATableAdapter rODADATableAdapter;
-        private System.Windows.Forms.DataGridView dataGridViewRodada;
+        private System.Windows.Forms.DataGridView dataGridViewResultados;
         private System.Windows.Forms.GroupBox grRodada;
         private System.Windows.Forms.ComboBox cbRodada;
         private System.Windows.Forms.GroupBox grCampeonato;
