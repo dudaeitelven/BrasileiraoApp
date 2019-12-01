@@ -201,7 +201,10 @@ public class Telas
                 listaEstatistica = tabelaEstatistica.RetornarEstatisticaMaisGols(idCampeonato, nroRodada);
                 foreach (var estatistica in listaEstatistica)
                 {
-                    Console.WriteLine("Time: " + estatistica.ResTime + " gols: " + estatistica.ResSaldoGols);
+                    //Console.WriteLine("Time: " + estatistica.ResTime + " gols: " + estatistica.ResSaldoGols);
+                    Console.WriteLine("Time: {0} gols: {1}",estatistica.ResTime,estatistica.ResSaldoGols);
+                    
+                    Console.WriteLine("Time: {0} /t gols: {1}", estatistica.ResTime, estatistica.ResSaldoGols);
                 }
                 break;
             case 2:
