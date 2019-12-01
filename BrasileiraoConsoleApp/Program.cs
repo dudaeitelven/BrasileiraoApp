@@ -27,7 +27,7 @@ namespace BrasileiraoConsoleApp
                         break;
                     case 2:
                         Console.Clear();
-                        view.selecionaRodadas();
+                        view.visualizaRodadas();
                         break;
                     case 3:
                         Console.Clear();
@@ -39,7 +39,6 @@ namespace BrasileiraoConsoleApp
                         break;
                     default:
                         Console.WriteLine("Opção inválida.");
-                        //Console.Clear();
                         break;
                 }
             }

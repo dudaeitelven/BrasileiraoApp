@@ -67,5 +67,10 @@ namespace BrasileiraoApp.View
 
             dataGridViewRodada.Columns[1].DefaultCellStyle.Format = "d";
         }
+
+        private void dataGridViewRodada_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

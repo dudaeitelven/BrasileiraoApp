@@ -5,7 +5,7 @@ using BrasileiraoApp.Model;
 
 public class Telas
 {
-	public Telas(){}
+    public Telas() { }
 
     public void intro()
     {
@@ -17,7 +17,7 @@ public class Telas
 
     public int escolherOpcao()
     {
-        int opcao=0;
+        int opcao = 0;
         Boolean passou = false;
 
         while (passou == false)
@@ -87,17 +87,17 @@ public class Telas
         int op = 1;
 
         this.intro();
-        
+
         Console.WriteLine("----------Área Restrita----------");
         Console.WriteLine();
         Console.WriteLine("1 - Para fazer login.");
         Console.WriteLine("0 - Para sair da área restrita.");
 
-        while (op!=0)
+        while (op != 0)
         {
             op = this.escolherOpcao();
             switch (op)
-            {   
+            {
                 case 1:
                     this.fazerLogin();
                     break;
@@ -109,9 +109,9 @@ public class Telas
             }
         }
     }
-    public void selecionaCampeonato()
+    public int selecionaCampeonato()
     {
-        int i = 0;
+        int i = 1;
 
         FillComboCampeonato fillCampeonatos = new FillComboCampeonato();
         List<string> fillCampeonatosList = new List<string>();
@@ -122,31 +122,46 @@ public class Telas
 
         foreach (var lineListCampeonato in fillCampeonatosList)
         {
-            Console.WriteLine(i++ +" - " +lineListCampeonato);
+            Console.WriteLine(i++ + " - " + lineListCampeonato);
         }
 
-        this.escolherOpcao();
-        
-        
+        return this.escolherOpcao();
     }
 
-    public void selecionaRodadas()
+    public void visualizaRodadas()
     {
+        int nroRodada;
+        int idCampeonato;
+
         FillComboRodadas rodadas = new FillComboRodadas();
         List<int> FillComboRodadas = new List<int>();
 
-        this.selecionaCampeonato();
+        FillGridRodadas jogosRodadas = new FillGridRodadas();
+        List<FillGridRodadas> listaJogosRodadas = new List<FillGridRodadas>();
+
+        idCampeonato = this.selecionaCampeonato();
 
         Console.WriteLine("Selecione a rodada:");
-        //listar as rodadas
 
-        FillComboRodadas = rodadas.RetornarRodadas(1);
+        FillComboRodadas = rodadas.RetornarRodadas(idCampeonato);
 
         foreach (var lineListRodadas in FillComboRodadas)
         {
             Console.WriteLine(lineListRodadas);
         }
-        this.escolherOpcao();
+
+        nroRodada = this.escolherOpcao();
+
+        listaJogosRodadas = jogosRodadas.RetornarTimesRodadas(idCampeonato, nroRodada);
+
+        foreach (var jogo in listaJogosRodadas)
+        {
+            Console.WriteLine("Rodada " + jogo.ResNumeroRodada + " - " + "Data: " + jogo.ResDataRodada );
+            Console.WriteLine("Time Casa: " +jogo.ResTimeCasa);
+            Console.WriteLine("Time Visitante: " +jogo.ResTimeVisitante);
+            Console.WriteLine();
+        }
+
     }
 
     public void selecionaEstatisticas()
