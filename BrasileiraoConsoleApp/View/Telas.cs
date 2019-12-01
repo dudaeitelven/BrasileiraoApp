@@ -128,6 +128,24 @@ public class Telas
         return this.escolherOpcao();
     }
 
+    public int selecionaRodada(int idCampeonato)
+    {
+        FillComboRodadas rodadas = new FillComboRodadas();
+        List<int> FillComboRodadas = new List<int>();
+
+        Console.WriteLine("Selecione a rodada:");
+
+        FillComboRodadas = rodadas.RetornarRodadas(idCampeonato);
+
+        foreach (var lineListRodadas in FillComboRodadas)
+        {
+            Console.WriteLine(lineListRodadas);
+        }
+
+        return this.escolherOpcao();
+
+    }
+
     public void visualizaRodadas()
     {
         int nroRodada;
@@ -141,22 +159,13 @@ public class Telas
 
         idCampeonato = this.selecionaCampeonato();
 
-        Console.WriteLine("Selecione a rodada:");
-
-        FillComboRodadas = rodadas.RetornarRodadas(idCampeonato);
-
-        foreach (var lineListRodadas in FillComboRodadas)
-        {
-            Console.WriteLine(lineListRodadas);
-        }
-
-        nroRodada = this.escolherOpcao();
+        nroRodada = this.selecionaRodada(idCampeonato);
 
         listaJogosRodadas = jogosRodadas.RetornarTimesRodadas(idCampeonato, nroRodada);
 
         foreach (var jogo in listaJogosRodadas)
         {
-            Console.WriteLine("Rodada " + jogo.ResNumeroRodada + " - " + "Data: " + jogo.ResDataRodada );
+            Console.WriteLine("Rodada " + jogo.ResNumeroRodada + " - " + "Data: " + DateTime.Parse(jogo.ResDataRodada).ToString("dd-MM-yyyy"));
             Console.WriteLine("Time Casa: " +jogo.ResTimeCasa);
             Console.WriteLine("Time Visitante: " +jogo.ResTimeVisitante);
             Console.WriteLine();
@@ -166,13 +175,60 @@ public class Telas
 
     public void selecionaEstatisticas()
     {
-        this.selecionaCampeonato();
-        Console.WriteLine("1 - Para melhor ataque.");
-        Console.WriteLine("2 - Para pior ataque.");
-        Console.WriteLine("3 - Para melhor defesa.");
-        Console.WriteLine("4 - Para pior defesa.");
+        int opcao;
+        int nroRodada;
+        int idCampeonato;
+
+        FillGridTabelaEstatistica tabelaEstatistica = new FillGridTabelaEstatistica();
+
+        List<FillGridTabelaEstatistica> listaEstatistica = new List<FillGridTabelaEstatistica>();
+        
+
+        idCampeonato = this.selecionaCampeonato();
+        nroRodada = this.selecionaRodada(idCampeonato);
+
+        Console.WriteLine("1 - Para melhor ataque - Mais fez gols");
+        Console.WriteLine("2 - Para pior ataque - Menos fez gols");
+        Console.WriteLine("3 - Para melhor defesa - Menos faltas");
+        Console.WriteLine("4 - Para pior defesa - Mais faltas");
         Console.WriteLine("Selecione a estatística:");
-        this.escolherOpcao();
+
+        opcao = this.escolherOpcao();
+
+        switch (opcao)
+        {
+            case 1:
+                listaEstatistica = tabelaEstatistica.RetornarEstatisticaMaisGols(idCampeonato, nroRodada);
+                foreach (var estatistica in listaEstatistica)
+                {
+                    Console.WriteLine("Time: " + estatistica.ResTime + " gols: " + estatistica.ResSaldoGols);
+                }
+                break;
+            case 2:
+                listaEstatistica = tabelaEstatistica.RetornarEstatisticaMenosGols(idCampeonato, nroRodada);
+                foreach (var estatistica in listaEstatistica)
+                {
+                    Console.WriteLine("Time: " + estatistica.ResTime + " gols: " + estatistica.ResSaldoGols);
+                }
+                break;
+            case 3:
+                listaEstatistica = tabelaEstatistica.RetornarEstatisticaMenosFaltas(idCampeonato, nroRodada);
+                foreach (var estatistica in listaEstatistica)
+                {
+                    Console.WriteLine("Time: " + estatistica.ResTime + " faltas: " + estatistica.ResTotalFaltas);
+                }
+                break;
+            case 4:
+                listaEstatistica = tabelaEstatistica.RetornarEstatisticaMaisFaltas(idCampeonato, nroRodada);
+                foreach (var estatistica in listaEstatistica)
+                {
+                    Console.WriteLine("Time: " + estatistica.ResTime + " faltas: " + estatistica.ResTotalFaltas);
+                }
+                break;
+            default:
+                Console.WriteLine("Opção inválida.");
+                break;
+        }
 
     }
 
@@ -240,7 +296,6 @@ public class Telas
                 Console.WriteLine("Opção inválida.");
                 break;
         }
-
     }
 
     public void visualizaClassificacao()

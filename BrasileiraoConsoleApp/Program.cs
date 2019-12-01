@@ -37,6 +37,9 @@ namespace BrasileiraoConsoleApp
                         Console.Clear();
                         view.visualizaClassificacao();
                         break;
+                    case 0:
+                        Console.WriteLine("Programa encerrado!");
+                        break;
                     default:
                         Console.WriteLine("Opção inválida.");
                         break;
