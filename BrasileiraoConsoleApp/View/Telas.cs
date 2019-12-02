@@ -163,11 +163,13 @@ public class Telas
 
         listaJogosRodadas = jogosRodadas.RetornarTimesRodadas(idCampeonato, nroRodada);
 
+        Console.Clear();
+        Console.WriteLine("Rodada " + nroRodada);
         foreach (var jogo in listaJogosRodadas)
         {
-            Console.WriteLine("Rodada " + jogo.ResNumeroRodada + " - " + "Data: " + DateTime.Parse(jogo.ResDataRodada).ToString("dd-MM-yyyy"));
-            Console.WriteLine("Time Casa: " +jogo.ResTimeCasa);
-            Console.WriteLine("Time Visitante: " +jogo.ResTimeVisitante);
+            Console.WriteLine("Data: " + DateTime.Parse(jogo.ResDataRodada).ToString("dd-MM-yyyy"));
+            Console.WriteLine("Time Casa: " + jogo.ResTimeCasa);
+            Console.WriteLine("Time Visitante: " + jogo.ResTimeVisitante);
             Console.WriteLine();
         }
 
@@ -175,64 +177,75 @@ public class Telas
 
     public void selecionaEstatisticas()
     {
-        int opcao;
+        int opcao = 1;
         int nroRodada;
         int idCampeonato;
 
         FillGridTabelaEstatistica tabelaEstatistica = new FillGridTabelaEstatistica();
 
         List<FillGridTabelaEstatistica> listaEstatistica = new List<FillGridTabelaEstatistica>();
-        
+
 
         idCampeonato = this.selecionaCampeonato();
         nroRodada = this.selecionaRodada(idCampeonato);
 
-        Console.WriteLine("1 - Para melhor ataque - Mais fez gols");
-        Console.WriteLine("2 - Para pior ataque - Menos fez gols");
-        Console.WriteLine("3 - Para melhor defesa - Menos faltas");
-        Console.WriteLine("4 - Para pior defesa - Mais faltas");
-        Console.WriteLine("Selecione a estatística:");
+        Console.Clear();
 
-        opcao = this.escolherOpcao();
-
-        switch (opcao)
+        while (opcao != 0)
         {
-            case 1:
-                listaEstatistica = tabelaEstatistica.RetornarEstatisticaMaisGols(idCampeonato, nroRodada);
-                foreach (var estatistica in listaEstatistica)
-                {
-                    //Console.WriteLine("Time: " + estatistica.ResTime + " gols: " + estatistica.ResSaldoGols);
-                    Console.WriteLine("Time: {0} gols: {1}",estatistica.ResTime,estatistica.ResSaldoGols);
-                    
-                    Console.WriteLine("Time: {0} /t gols: {1}", estatistica.ResTime, estatistica.ResSaldoGols);
-                }
-                break;
-            case 2:
-                listaEstatistica = tabelaEstatistica.RetornarEstatisticaMenosGols(idCampeonato, nroRodada);
-                foreach (var estatistica in listaEstatistica)
-                {
-                    Console.WriteLine("Time: " + estatistica.ResTime + " gols: " + estatistica.ResSaldoGols);
-                }
-                break;
-            case 3:
-                listaEstatistica = tabelaEstatistica.RetornarEstatisticaMenosFaltas(idCampeonato, nroRodada);
-                foreach (var estatistica in listaEstatistica)
-                {
-                    Console.WriteLine("Time: " + estatistica.ResTime + " faltas: " + estatistica.ResTotalFaltas);
-                }
-                break;
-            case 4:
-                listaEstatistica = tabelaEstatistica.RetornarEstatisticaMaisFaltas(idCampeonato, nroRodada);
-                foreach (var estatistica in listaEstatistica)
-                {
-                    Console.WriteLine("Time: " + estatistica.ResTime + " faltas: " + estatistica.ResTotalFaltas);
-                }
-                break;
-            default:
-                Console.WriteLine("Opção inválida.");
-                break;
-        }
+            Console.WriteLine("Rodada " + nroRodada);
+            Console.WriteLine("1 - Para melhor ataque - Mais fez gols.");
+            Console.WriteLine("2 - Para pior ataque - Menos fez gols.");
+            Console.WriteLine("3 - Para melhor defesa - Menos faltas.");
+            Console.WriteLine("4 - Para pior defesa - Mais faltas.");
+            Console.WriteLine("0 - Para sair das estatísticas.");
+            Console.WriteLine("Selecione a estatística:");
 
+            opcao = this.escolherOpcao();
+            Console.Clear();
+            switch (opcao)
+            {
+                case 1:
+                    Console.WriteLine("Melhor ataque - Mais fez gols:");
+                    listaEstatistica = tabelaEstatistica.RetornarEstatisticaMaisGols(idCampeonato, nroRodada);
+                    foreach (var estatistica in listaEstatistica)
+                    {
+                        Console.WriteLine("Time: " + estatistica.ResTime + " gols: " + estatistica.ResSaldoGols);
+                    }
+                    break;
+                case 2:
+                    Console.WriteLine("Pior ataque - Menos fez gols:");
+                    listaEstatistica = tabelaEstatistica.RetornarEstatisticaMenosGols(idCampeonato, nroRodada);
+                    foreach (var estatistica in listaEstatistica)
+                    {
+                        Console.WriteLine("Time: " + estatistica.ResTime + " gols: " + estatistica.ResSaldoGols);
+                    }
+                    break;
+                case 3:
+                    Console.WriteLine("Melhor defesa - Menos faltas:");
+                    listaEstatistica = tabelaEstatistica.RetornarEstatisticaMenosFaltas(idCampeonato, nroRodada);
+                    foreach (var estatistica in listaEstatistica)
+                    {
+                        Console.WriteLine("Time: " + estatistica.ResTime + " faltas: " + estatistica.ResTotalFaltas);
+                    }
+                    break;
+                case 4:
+                    Console.WriteLine("Pior defesa - Mais faltas:");
+                    listaEstatistica = tabelaEstatistica.RetornarEstatisticaMaisFaltas(idCampeonato, nroRodada);
+                    foreach (var estatistica in listaEstatistica)
+                    {
+                        Console.WriteLine("Time: " + estatistica.ResTime + " faltas: " + estatistica.ResTotalFaltas);
+                    }
+                    break;
+                case 0:
+                    Console.WriteLine("Saindo das estatísticas.");
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida.");
+                    break;
+            }
+            Console.WriteLine();
+        }
     }
 
     public void cadastroTime()
@@ -242,6 +255,8 @@ public class Telas
         int ano;
         int nroTorcedores;
         int nroTitulos;
+        TIME time;
+        CadastrarTime cadastro = new CadastrarTime();
 
         Console.WriteLine("Insira o nome do time:");
         nome = Console.ReadLine();
@@ -257,17 +272,25 @@ public class Telas
 
         Console.WriteLine("Insira o número de títulos do time:");
         nroTitulos = Convert.ToInt32(Console.ReadLine());
+
+        time = new TIME(nome, historia, ano, nroTorcedores, nroTitulos);
+        cadastro.SalvarTime(time);
+
+        Console.WriteLine("Time Cadastrado!");
     }
 
     public void cadastroCampeonato()
     {
-        String nome;
+        String descricao;
         String historia;
         int ano;
         int qtdTimes;
 
+        CAMPEONATO campeonato;
+        CadastrarCampeonato cadastro = new CadastrarCampeonato();
+
         Console.WriteLine("Insira o nome do campeonato:");
-        nome = Console.ReadLine();
+        descricao = Console.ReadLine();
 
         Console.WriteLine("Insira a história do campeonato:");
         historia = Console.ReadLine();
@@ -278,35 +301,63 @@ public class Telas
         Console.WriteLine("Insira a quantidade de times do campeonato:");
         qtdTimes = Convert.ToInt32(Console.ReadLine());
 
+        campeonato = new CAMPEONATO(descricao, historia, ano, qtdTimes);
+        cadastro.SalvarCampeonato(campeonato);
+        Console.WriteLine("Campeonato cadastrado com sucesso!");
+        
     }
 
     public void areaRestrita()
     {
-        int op;
-        Console.WriteLine("1 - Para cadastrar times.");
-        Console.WriteLine("2 - Para cadastrar campeonatos.");
-        op = this.escolherOpcao();
+        int op = 1;
 
-        switch (op)
+        while (op != 0)
         {
-            case 1:
-                this.cadastroTime();
-                break;
-            case 2:
-                this.cadastroCampeonato();
-                break;
-            default:
-                Console.WriteLine("Opção inválida.");
-                break;
+            Console.WriteLine("1 - Para cadastrar times.");
+            Console.WriteLine("2 - Para cadastrar campeonatos.");
+            Console.WriteLine("0 - Para sair da área restrita.");
+            op = this.escolherOpcao();
+            Console.Clear();
+
+            switch (op)
+            {
+                case 1:
+                    this.cadastroTime();
+                    break;
+                case 2:
+                    this.cadastroCampeonato();
+                    break;
+                case 0:
+                    Console.WriteLine("Saindo da área restrita.");
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida.");
+                    break;
+            }
         }
+
     }
 
     public void visualizaClassificacao()
     {
-        this.selecionaCampeonato();
+        int idCampeonato;
+        int nroRodada;
 
+        FillGridTabelaClassificacao tabelaClassificacao = new FillGridTabelaClassificacao();
+        List<FillGridTabelaClassificacao> listaTabela = new List<FillGridTabelaClassificacao>();
 
+        idCampeonato = this.selecionaCampeonato();
+        nroRodada = this.selecionaRodada(idCampeonato);
+
+        listaTabela = tabelaClassificacao.RetornarClassificacaoRodada(idCampeonato, nroRodada);
+        Console.Clear();
+
+        Console.WriteLine("Classificação Rodada " + nroRodada);
+        Console.WriteLine();
+        foreach (var clas in listaTabela)
+        {
+            Console.WriteLine("Time: " + clas.ResTime + " | Pontos: " + clas.ResPontos + " | Saldo Gols: " + clas.ResSaldoGols + " | Total Faltas: " + clas.ResTotalFaltas);
+            Console.WriteLine();
+        }
     }
-
-
 }
