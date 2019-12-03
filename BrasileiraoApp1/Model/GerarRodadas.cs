@@ -118,7 +118,7 @@ namespace BrasileiraoApp.Model
             }
         }
 
-        public void salvarRodadas(int idCampeonato, DateTime dataInicial)
+        public void salvarRodadas(int idCampeonato, DateTime dataInicial, bool checkedDuasDatas)
         {
             int i = 0;
 
@@ -130,12 +130,17 @@ namespace BrasileiraoApp.Model
                     context.RODADA.Add(rodada);
                     context.SaveChanges();
 
-                    dataInicial = dataInicial.AddDays(7);
+                    if (checkedDuasDatas)
+                    {
+                        if (i % 2 == 0) dataInicial = dataInicial.AddDays(4);
+                        else dataInicial = dataInicial.AddDays(3);
+                    } 
+                    else dataInicial = dataInicial.AddDays(7);
                 }
             }
         }
 
-        public void comecar(int idCampeonato)
+        public void realizarSorteio(int idCampeonato, DateTime dataInicio, bool checkedDuasDatas)
         {
             int[,] matriz;
             int auxIdTime;
@@ -151,12 +156,12 @@ namespace BrasileiraoApp.Model
             if (listTimesCampeonato.Count == 20)
             {
                 //Gera as rodadas e insere no banco
-                a.salvarRodadas(idCampeonato, Convert.ToDateTime("2019-01-01"));
+                a.salvarRodadas(idCampeonato, dataInicio, checkedDuasDatas);
 
                 //Gera os jogos para o campeonato.
                 matriz = a.GenerateRoundRobin(20);
 
-                for (int i = 0; i < matriz.GetLength(0); i++)
+                for (int i = 0; i < (matriz.GetLength(0)/2); i++)
                 {
                     //Linha do time 
                     auxIdTime = listTimesCampeonato[i];
@@ -168,6 +173,28 @@ namespace BrasileiraoApp.Model
 
                         //Busca o id da roda x no compeonato y.
                         auxIdRodada = a.retornarIdRodada(idCampeonato, j + 1);
+
+                        //Time casa auxIdTime
+                        //Time fora auxIdTimeAdversario
+
+                        //Salva na tabela JOGO.
+                        JOGO jogo = new JOGO(auxIdRodada, idCampeonato, auxIdTime, 0, 0, auxIdTimeAdversario, 0, 0, "");
+                        a.salvarJogo(jogo);
+                    }
+                }
+
+                for (int i = (matriz.GetLength(0) / 2); i < (matriz.GetLength(0)); i++)
+                {
+                    //Linha do time 
+                    auxIdTime = listTimesCampeonato[i];
+
+                    for (int j = 0; j < (matriz.GetLength(1)); j++)
+                    {
+                        //Adversario
+                        auxIdTimeAdversario = listTimesCampeonato[matriz[i, j]];
+
+                        //Busca o id da roda x no compeonato y.
+                        auxIdRodada = a.retornarIdRodada(idCampeonato, j + 20);
 
                         //Time casa auxIdTime
                         //Time fora auxIdTimeAdversario

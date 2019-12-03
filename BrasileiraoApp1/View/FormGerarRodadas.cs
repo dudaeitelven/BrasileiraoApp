@@ -22,13 +22,13 @@ namespace BrasileiraoApp.View
         {
             // TODO: esta linha de código carrega dados na tabela 'dataSetCAMPEONATOS.CAMPEONATO'. Você pode movê-la ou removê-la conforme necessário.
             this.cAMPEONATOTableAdapter.Fill(this.dataSetCAMPEONATOS.CAMPEONATO);
-            cbCampeonato.SelectedIndex = 1;
+            cbCampeonato.SelectedIndex = -1;
         }
 
         private void buttonGerarRodadas_Click(object sender, EventArgs e)
         {
             GerarRodadas gerarRodadas = new GerarRodadas();
-            gerarRodadas.comecar(Convert.ToInt32(cbCampeonato.SelectedValue));
+            gerarRodadas.realizarSorteio(Convert.ToInt32(cbCampeonato.SelectedValue), dateTimePickerNascimento.Value, checkBoxDuasRodadasSemana.Checked);
 
         }
     }

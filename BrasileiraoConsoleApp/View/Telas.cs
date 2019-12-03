@@ -356,7 +356,7 @@ public class Telas
         Console.WriteLine();
         foreach (var clas in listaTabela)
         {
-            Console.WriteLine("Time: " + clas.ResTime + " | Pontos: " + clas.ResPontos + " | Saldo Gols: " + clas.ResSaldoGols + " | Total Faltas: " + clas.ResTotalFaltas);
+            Console.WriteLine("Time: " + clas.ResTime + "\t | Pontos: " + clas.ResPontos + "\t | Saldo Gols: " + clas.ResSaldoGols + "\t | Total Faltas: " + clas.ResTotalFaltas);
             Console.WriteLine();
         }
     }

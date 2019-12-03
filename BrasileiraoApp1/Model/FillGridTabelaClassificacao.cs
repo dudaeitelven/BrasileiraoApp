@@ -35,8 +35,8 @@ namespace BrasileiraoApp.Model
                                 resNumeroRodada = rodada.numeroRodada,
                                 resTime = time.nome,
                                 resPontos = resultado.pontos,
-                                resSaldoGols = resultado.saldoGols
-                                //resTotalFaltas
+                                resSaldoGols = resultado.saldoGols,
+                                resTotalFaltas = resultado.totalFaltas
                             };
 
                 return query.ToList();

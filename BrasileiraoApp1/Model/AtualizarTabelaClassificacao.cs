@@ -43,7 +43,7 @@ namespace BrasileiraoApp.Model
                          resGolsCasa = jogo.golsCasa,
                          resGolsVisitante = jogo.golsVisitante,
                          resNumeroFaltasCasa = jogo.numeroFaltasCasa,
-                         resPontos = jogo.golsCasa > jogo.golsVisitante ? 3 : (jogo.golsCasa == jogo.golsVisitante ? 1 : 0),
+                         resPontos = jogo.numeroFaltasCasa != 0 && jogo.numeroFaltasVisitante != 0 ? (jogo.golsCasa > jogo.golsVisitante ? 3 : (jogo.golsCasa == jogo.golsVisitante ? 1 : 0)) : 0,
                          resSaldoGols = jogo.golsCasa - jogo.golsVisitante
                      });
                 return query.ToList();
@@ -67,7 +67,7 @@ namespace BrasileiraoApp.Model
                          resGolsCasa = jogo.golsVisitante,
                          resGolsVisitante = jogo.golsCasa,
                          resNumeroFaltasCasa = jogo.numeroFaltasVisitante,
-                         resPontos = jogo.golsVisitante > jogo.golsCasa ? 3 : (jogo.golsCasa == jogo.golsVisitante ? 1 : 0),
+                         resPontos = jogo.numeroFaltasCasa != 0 && jogo.numeroFaltasVisitante != 0 ? (jogo.golsVisitante > jogo.golsCasa ? 3 : (jogo.golsCasa == jogo.golsVisitante ? 1 : 0)) : 0,
                          resSaldoGols = jogo.golsVisitante - jogo.golsCasa
                      });
                 return query.ToList();
@@ -89,6 +89,17 @@ namespace BrasileiraoApp.Model
             }
         }
 
+
+        public void limparDadosTabelaClassificacao(int idCampeonato)
+        {
+            using (CAMPEONATOSEntities context = new CAMPEONATOSEntities())
+            {
+                int noOfRowDeleted = context.Database.ExecuteSqlCommand("Delete from RESULTADO where idCampeonato = " + idCampeonato);
+            }
+
+            
+        }
+
         public void calcularResultados(int idCampeonato)
         {
             int i = 0;
@@ -105,6 +116,9 @@ namespace BrasileiraoApp.Model
             List<AtualizarTabelaClassificacao> listTimeCasa = new List<AtualizarTabelaClassificacao>();
             List<AtualizarTabelaClassificacao> listTimeVistante = new List<AtualizarTabelaClassificacao>();
             List<AtualizarTabelaClassificacao> listTimeRodadas = new List<AtualizarTabelaClassificacao>();
+
+            //Limpa a tabela resultado
+            atualizarTabelaClassificacao.limparDadosTabelaClassificacao(idCampeonato);
 
             //Retornar os times do campeonato
             listTimeCampeonato = atualizarTabelaClassificacao.retornarTimesCampeonato(idCampeonato);

@@ -150,6 +150,7 @@
             this.Controls.Add(this.buttonResultadoRodadas);
             this.Controls.Add(this.buttonVincularTimes);
             this.Controls.Add(this.buttonCadastarTime);
+            this.MaximizeBox = false;
             this.Name = "FormAreaRestrita";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Área restrita";

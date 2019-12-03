@@ -24,6 +24,17 @@ namespace BrasileiraoApp
             this.saldoGols = saldoGols;
         }
 
+        public RESULTADO(int id, int idTime, int idRodada, int idCampeonato, int pontos, int totalFaltas, double saldoGols)
+        {
+            this.id = id;
+            this.idTime = idTime;
+            this.idRodada = idRodada;
+            this.idCampeonato = idCampeonato;
+            this.pontos = pontos;
+            this.totalFaltas = totalFaltas;
+            this.saldoGols = saldoGols;
+        }
+
         public int id { get; set; }
         public int idTime { get; set; }
         public int idRodada { get; set; }
