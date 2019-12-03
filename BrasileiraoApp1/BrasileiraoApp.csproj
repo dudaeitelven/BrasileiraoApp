@@ -90,6 +90,7 @@
     <Compile Include="Model\AtualizarResultados.cs" />
     <Compile Include="Model\CadastrarCampeonato.cs" />
     <Compile Include="Model\CadastrarTime.cs" />
+    <Compile Include="Model\GerarRodadas.cs" />
     <Compile Include="Model\FillComboCampeonato.cs" />
     <Compile Include="Model\FillComboEstatistica.cs" />
     <Compile Include="Model\FillComboRodadas.cs" />

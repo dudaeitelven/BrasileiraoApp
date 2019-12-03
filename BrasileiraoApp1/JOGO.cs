@@ -14,6 +14,19 @@ namespace BrasileiraoApp
     
     public partial class JOGO
     {
+        public JOGO(int idRodada, int idCampeonato, int idTimeCasa, int golsCasa, int numeroFaltasCasa, int idTimeVisitante, int golsVisitante, int numeroFaltasVisitante, string observacaoJogo)
+        {
+            this.idRodada = idRodada;
+            this.idCampeonato = idCampeonato;
+            this.idTimeCasa = idTimeCasa;
+            this.golsCasa = golsCasa;
+            this.numeroFaltasCasa = numeroFaltasCasa;
+            this.idTimeVisitante = idTimeVisitante;
+            this.golsVisitante = golsVisitante;
+            this.numeroFaltasVisitante = numeroFaltasVisitante;
+            this.observacaoJogo = observacaoJogo;
+        }
+
         public int id { get; set; }
         public int idRodada { get; set; }
         public int idCampeonato { get; set; }
