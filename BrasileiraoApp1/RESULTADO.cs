@@ -14,14 +14,14 @@ namespace BrasileiraoApp
     
     public partial class RESULTADO
     {
-        public RESULTADO(int idTime, int idRodada, int idCampeonato, int pontos, int saldoGols, int totalFaltas)
+        public RESULTADO(int idTime, int idRodada, int idCampeonato, int pontos, int totalFaltas, double saldoGols)
         {
             this.idTime = idTime;
             this.idRodada = idRodada;
             this.idCampeonato = idCampeonato;
             this.pontos = pontos;
-            this.saldoGols = saldoGols;
             this.totalFaltas = totalFaltas;
+            this.saldoGols = saldoGols;
         }
 
         public int id { get; set; }
@@ -29,8 +29,8 @@ namespace BrasileiraoApp
         public int idRodada { get; set; }
         public int idCampeonato { get; set; }
         public int pontos { get; set; }
-        public int saldoGols { get; set; }
         public int totalFaltas { get; set; }
+        public double saldoGols { get; set; }
     
         public virtual CAMPEONATO CAMPEONATO { get; set; }
         public virtual RODADA RODADA { get; set; }

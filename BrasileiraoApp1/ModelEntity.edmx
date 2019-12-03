@@ -39,8 +39,8 @@
           <Property Name="idRodada" Type="int" Nullable="false" />
           <Property Name="idCampeonato" Type="int" Nullable="false" />
           <Property Name="pontos" Type="int" Nullable="false" />
-          <Property Name="saldoGols" Type="float" Nullable="false" />
           <Property Name="totalFaltas" Type="int" Nullable="false" />
+          <Property Name="saldoGols" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="RODADA">
           <Key>
@@ -247,11 +247,11 @@
           <Property Name="idRodada" Type="Int32" Nullable="false" />
           <Property Name="idCampeonato" Type="Int32" Nullable="false" />
           <Property Name="pontos" Type="Int32" Nullable="false" />
-          <Property Name="saldoGols" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CAMPEONATO" Relationship="Self.FK_RESULTADO_ID_CAMPEONATO" FromRole="RESULTADO" ToRole="CAMPEONATO" />
           <NavigationProperty Name="RODADA" Relationship="Self.FK_RESULTADO_ID_RODADA" FromRole="RESULTADO" ToRole="RODADA" />
           <NavigationProperty Name="TIME" Relationship="Self.FK_RESULTADO_ID_TIME" FromRole="RESULTADO" ToRole="TIME" />
           <Property Name="totalFaltas" Type="Int32" Nullable="false" />
+          <Property Name="saldoGols" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="RODADA">
           <Key>
@@ -505,13 +505,13 @@
           <EntitySetMapping Name="RESULTADO">
             <EntityTypeMapping TypeName="CAMPEONATOSModel.RESULTADO">
               <MappingFragment StoreEntitySet="RESULTADO">
+                <ScalarProperty Name="saldoGols" ColumnName="saldoGols" />
                 <ScalarProperty Name="totalFaltas" ColumnName="totalFaltas" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idTime" ColumnName="idTime" />
                 <ScalarProperty Name="idRodada" ColumnName="idRodada" />
                 <ScalarProperty Name="idCampeonato" ColumnName="idCampeonato" />
                 <ScalarProperty Name="pontos" ColumnName="pontos" />
-                <ScalarProperty Name="saldoGols" ColumnName="saldoGols" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

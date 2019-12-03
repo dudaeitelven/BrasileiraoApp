@@ -8,96 +8,152 @@ namespace BrasileiraoApp.Model
 {
     public class AtualizarTabelaClassificacao
     {
- 
-        public void retornarDadosTimeCasa(int idCampeonato,int nroRodada, int idTime)
+        int resIdRodada;
+        int resNroRodada;
+        int resIdTimeCasa;
+        int resGolsCasa;
+        int resGolsVisitante;
+        int resNumeroFaltasCasa;
+        int resPontos;
+        float resSaldoGols;
+
+        public int ResIdRodada { get => resIdRodada; set => resIdRodada = value; }
+        public int ResNroRodada { get => resNroRodada; set => resNroRodada = value; }
+        public int ResIdTimeCasa { get => resIdTimeCasa; set => resIdTimeCasa = value; }
+        public int ResGolsCasa { get => resGolsCasa; set => resGolsCasa = value; }
+        public int ResGolsVisitante { get => resGolsVisitante; set => resGolsVisitante = value; }
+        public int ResNumeroFaltasCasa { get => resNumeroFaltasCasa; set => resNumeroFaltasCasa = value; }
+        public int ResPontos { get => resPontos; set => resPontos = value; }
+        public float ResSaldoGols { get => resSaldoGols; set => resSaldoGols = value; }
+
+        public List<AtualizarTabelaClassificacao> retornarDadosTimesCasa(int idCampeonato, int idTime)
         {
             using (CAMPEONATOSEntities context = new CAMPEONATOSEntities())
             {
-                var calculosCasa =
+                var query =
                     (from jogo in context.JOGO
                      join rodada in context.RODADA on jogo.idRodada equals rodada.id
-                     where jogo.idCampeonato == idCampeonato && rodada.numeroRodada <= nroRodada
-                     && jogo.idTimeCasa == idTime
-                     group jogo by jogo.idTimeCasa into jogoGroup
-                     select new
+                     //join time in context.TIME on jogo.idTimeCasa equals time.id
+                     where jogo.idCampeonato == idCampeonato && jogo.idTimeCasa == idTime
+                     select new AtualizarTabelaClassificacao
                      {
-                         Time = jogoGroup.Key,
-                         SaldoGols = (jogoGroup.Sum(x => x.golsCasa) - jogoGroup.Sum(x => x.golsVisitante)),
-                         Faltas = jogoGroup.Sum(x => x.numeroFaltasCasa),
-                     }).First();
+                         resIdRodada = jogo.idRodada,
+                         resNroRodada = rodada.numeroRodada,
+                         resIdTimeCasa = jogo.idTimeCasa,
+                         resGolsCasa = jogo.golsCasa,
+                         resGolsVisitante = jogo.golsVisitante,
+                         resNumeroFaltasCasa = jogo.numeroFaltasCasa,
+                         resPontos = jogo.golsCasa > jogo.golsVisitante ? 3 : (jogo.golsCasa == jogo.golsVisitante ? 1 : 0),
+                         resSaldoGols = jogo.golsCasa - jogo.golsVisitante
+                     });
+                return query.ToList();
+            }
+        }
 
-                var calculosFora =
+        public List<AtualizarTabelaClassificacao> retornarDadosTimesVisitante(int idCampeonato, int idTime)
+        {
+            using (CAMPEONATOSEntities context = new CAMPEONATOSEntities())
+            {
+                var query =
                     (from jogo in context.JOGO
                      join rodada in context.RODADA on jogo.idRodada equals rodada.id
-                     where jogo.idCampeonato == idCampeonato && rodada.numeroRodada <= nroRodada
-                     && jogo.idTimeVisitante == idTime
-                     group jogo by jogo.idTimeVisitante into jogoGroup
-                     select new
+                     //join time in context.TIME on jogo.idTimeVisitante equals time.id
+                     where jogo.idCampeonato == idCampeonato && jogo.idTimeVisitante == idTime
+                     select new AtualizarTabelaClassificacao
                      {
-                         Time = jogoGroup.Key,
-                         SaldoGols = (jogoGroup.Sum(x => x.golsCasa) - jogoGroup.Sum(x => x.golsVisitante)),
-                         Faltas = jogoGroup.Sum(x => x.numeroFaltasCasa),
-                     }).First();
+                         resIdRodada = jogo.idRodada,
+                         resNroRodada = rodada.numeroRodada,
+                         resIdTimeCasa = jogo.idTimeVisitante,
+                         resGolsCasa = jogo.golsVisitante,
+                         resGolsVisitante = jogo.golsCasa,
+                         resNumeroFaltasCasa = jogo.numeroFaltasVisitante,
+                         resPontos = jogo.golsVisitante > jogo.golsCasa ? 3 : (jogo.golsCasa == jogo.golsVisitante ? 1 : 0),
+                         resSaldoGols = jogo.golsVisitante - jogo.golsCasa
+                     });
+                return query.ToList();
+            }
+        }
 
-                var scoreFora  =
-                    (from jogo in context.JOGO
-                     join rodada in context.RODADA on jogo.idRodada equals rodada.id
-                     where jogo.idCampeonato == idCampeonato && rodada.numeroRodada <= nroRodada && jogo.idTimeVisitante == idTime
-                     group jogo by jogo.idTimeVisitante into jogoGroup
-                     select new
+        public List<AtualizarTabelaClassificacao> retornarTimesCampeonato(int idCampeonato)
+        {
+            using (CAMPEONATOSEntities context = new CAMPEONATOSEntities())
+            {
+                var query =
+                    (from timeCameponato in context.TIME_CAMPEONATO
+                     where timeCameponato.idCampeonato == idCampeonato
+                     select new AtualizarTabelaClassificacao
                      {
-                         Time = jogoGroup.Key,
-                         Pontos = (
-                                     jogoGroup.Sum(x => x.golsCasa > x.golsVisitante ? 3 :
-                                                        x.golsCasa == x.golsVisitante ? 1 : 0))
-                     }).First();
+                         resIdTimeCasa = timeCameponato.idTime
+                     });
+                return query.ToList();
+            }
+        }
 
-                //from u in users
-                //let range = (u.Age >= 0 && u.Age < 10 ? "0-25" :
-                //             u.Age >= 10 && u.Age < 15 ? "26-40" :
-                //             u.Age >= 15 && u.Age < 50 ? "60-100" :
-                //            "50+")
-                //group u by range into g
-                //select new { g.Key, Count = g.Count() };
+        public void calcularResultados(int idCampeonato)
+        {
+            int i = 0;
+            int auxIdRodada;
+            int auxNroRodada;
+            int auxIdTime;
+            int auxNumeroFaltas = 0;
+            int auxPontos = 0;
+            float auxSaldoGols = 0;
 
-                var scoreCasa =
-                    (from jogo in context.JOGO
-                     join rodada in context.RODADA on jogo.idRodada equals rodada.id
-                     where jogo.idCampeonato == idCampeonato && rodada.numeroRodada <= nroRodada && jogo.idTimeCasa == idTime
-                     group jogo by jogo.idTimeCasa into jogoGroup
-                     select new
-                     {
-                         Time = jogoGroup.Key,
-                         Pontos = (
-                                     jogoGroup.Sum(x => x.golsCasa > x.golsVisitante ? 3 :
-                                                        x.golsCasa == x.golsVisitante ? 1 : 0))
-                    }).First();
+            AtualizarTabelaClassificacao atualizarTabelaClassificacao = new AtualizarTabelaClassificacao();
+            List<AtualizarTabelaClassificacao> listTimeCampeonato = new List<AtualizarTabelaClassificacao>();
+            List<AtualizarTabelaClassificacao> listTimeCasa = new List<AtualizarTabelaClassificacao>();
+            List<AtualizarTabelaClassificacao> listTimeVistante = new List<AtualizarTabelaClassificacao>();
+            List<AtualizarTabelaClassificacao> listTimeRodadas = new List<AtualizarTabelaClassificacao>();
 
-                var TotalSaldoGols = 0;
-                var TotalFaltas = 0;
-                var TotalPontos = 0;
+            //Retornar os times do campeonato
+            listTimeCampeonato = atualizarTabelaClassificacao.retornarTimesCampeonato(idCampeonato);
+            listTimeCampeonato = listTimeCampeonato.OrderBy(Ord => Ord.resIdTimeCasa).ToList();
 
-                if (calculosCasa.Time == calculosFora.Time)
+            for (i = 0; i < listTimeCampeonato.Count; i++)
+            {
+                //Retorna os jogos em casa
+                listTimeCasa = atualizarTabelaClassificacao.retornarDadosTimesCasa(idCampeonato,listTimeCampeonato[i].resIdTimeCasa);
+                listTimeCasa = listTimeCasa.OrderBy(Ord => Ord.resIdRodada).ToList();
+
+                //Retorna os jogos fora
+                listTimeVistante = atualizarTabelaClassificacao.retornarDadosTimesVisitante(idCampeonato, listTimeCampeonato[i].resIdTimeCasa);
+                listTimeVistante = listTimeVistante.OrderBy(Ord => Ord.resIdRodada).ToList();
+
+                //Concatena todos os jogos do time em uma só lista
+                listTimeRodadas = listTimeCasa.Concat(listTimeVistante).ToList();
+                
+                //Percorre a lista de jogos do time
+                for (i = 0; i < listTimeRodadas.Count; i++)
                 {
-                    TotalSaldoGols = calculosCasa.SaldoGols + calculosFora.SaldoGols;
-                    TotalFaltas = calculosCasa.Faltas + calculosFora.Faltas;
+                    auxIdRodada = listTimeRodadas[i].resIdRodada;
+                    auxNroRodada = listTimeRodadas[i].resNroRodada;
+                    auxIdTime = listTimeRodadas[i].resIdTimeCasa;
+
+                    //Acumula os valores por rodada
+                    auxNumeroFaltas += listTimeRodadas[i].resNumeroFaltasCasa;
+                    auxPontos += listTimeRodadas[i].resPontos;
+                    auxSaldoGols += listTimeRodadas[i].resSaldoGols;
+
+                    //Persiste os dados na tabela RESULTADO
+                    salvarResultado(auxIdTime, auxIdRodada, idCampeonato, auxPontos, auxNumeroFaltas, auxSaldoGols);
                 }
 
-                if (scoreCasa.Time == scoreFora.Time)
-                {
-                    TotalPontos = scoreCasa.Pontos + scoreCasa.Pontos;
-                }
+                //Zera auxiliares
+                auxNumeroFaltas = 0;
+                auxPontos = 0;
+                auxSaldoGols = 0;
+            }      
 
-                var queryRoda = (from rodada in context.RODADA
-                                 where rodada.numeroRodada == nroRodada && rodada.idCampeonato == idCampeonato
-                                 select rodada.id
-                                 ).First();
+        }
 
-                RESULTADO resultado = new RESULTADO(idTime, queryRoda, idCampeonato,TotalPontos,TotalSaldoGols,TotalFaltas);
+        public void salvarResultado(int auxIdTime, int auxIdRodada, int idCampeonato, int auxPontos, int auxNumeroFaltas, double auxSaldoGols)
+        {
+            using (CAMPEONATOSEntities context = new CAMPEONATOSEntities())
+            {
+                RESULTADO resultado = new RESULTADO(auxIdTime, auxIdRodada, idCampeonato, auxPontos, auxNumeroFaltas, auxSaldoGols);
                 context.RESULTADO.Add(resultado);
                 context.SaveChanges();
             }
         }
-
     }
 }

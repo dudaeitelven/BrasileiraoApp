@@ -12,13 +12,13 @@ namespace BrasileiraoApp.Model
         private int resNumeroRodada;
         private string resTime;
         private int resPontos;
-        private float resSaldoGols;
+        private double resSaldoGols;
         private int resTotalFaltas;
 
         public int ResNumeroRodada { get => resNumeroRodada; set => resNumeroRodada = value; }
         public string ResTime { get => resTime; set => resTime = value; }
         public int ResPontos { get => resPontos; set => resPontos = value; }
-        public float ResSaldoGols { get => resSaldoGols; set => resSaldoGols = value; }
+        public double ResSaldoGols { get => resSaldoGols; set => resSaldoGols = value; }
         public int ResTotalFaltas { get => resTotalFaltas; set => resTotalFaltas = value; }
 
         public List<FillGridTabelaClassificacao> RetornarClassificacaoRodada(int idCampeonato, int nroRodada)
