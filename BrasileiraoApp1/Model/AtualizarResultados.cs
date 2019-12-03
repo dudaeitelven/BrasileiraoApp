@@ -47,5 +47,18 @@ namespace BrasileiraoApp.Model
             }
         }
 
+        public int retornarIdResultado(int idCampeonato, int idTimeCasa, int idTimeFora)
+        {
+            using (CAMPEONATOSEntities context = new CAMPEONATOSEntities())
+            {
+                var query = (from resultado in context.JOGO
+                                     where resultado.idCampeonato == idCampeonato
+                                     && resultado.idTimeCasa == idTimeCasa
+                                     && resultado.idTimeVisitante == idTimeFora
+                                     select resultado.id);
+                return query.FirstOrDefault();
+            }
+        }
+
     }
 }

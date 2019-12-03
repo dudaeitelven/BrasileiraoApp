@@ -307,6 +307,61 @@ public class Telas
         
     }
 
+    public void cadastrarResultados()
+    {
+        int i=0;
+        int op;
+        int nroRodada;
+        int idCampeonato;
+
+        FillComboRodadas rodadas = new FillComboRodadas();
+        List<int> FillComboRodadas = new List<int>();
+
+        FillGridRodadas jogosRodadas = new FillGridRodadas();
+        List<FillGridRodadas> listaJogosRodadas = new List<FillGridRodadas>();
+
+        idCampeonato = this.selecionaCampeonato();
+
+        nroRodada = this.selecionaRodada(idCampeonato);
+
+        listaJogosRodadas = jogosRodadas.RetornarTimesRodadas(idCampeonato, nroRodada);
+
+        Console.Clear();
+        Console.WriteLine("Rodada " + nroRodada);
+        foreach (var jogo in listaJogosRodadas)
+        {
+            Console.WriteLine("Linha " + i +"| Time Casa: " + jogo.ResTimeCasa + "| Time Visitante: " + jogo.ResTimeVisitante);
+            Console.WriteLine();
+        }
+
+        Console.WriteLine("Selecione um linha para informar o resutado:");
+        op = this.escolherOpcao();
+        Console.Clear();
+
+        Console.WriteLine("Informe gols do time " + listaJogosRodadas[op].ResTimeCasa  + ": ");
+        int golsTimeCasa = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Informe faltas do time " + listaJogosRodadas[op].ResTimeCasa + ": ");
+        int faltasTimeCasa = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Informe gols do time " + listaJogosRodadas[op].ResTimeVisitante + ": ");
+        int golsTimeFora = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Informe faltas do time " + listaJogosRodadas[op].ResTimeVisitante + ": ");
+        int faltasTimeFora = Convert.ToInt32(Console.ReadLine());
+
+        //int idResultado = atualizarResultados.retornarIdResultado(idCampeonato, listaJogosRodadas[op].)
+
+        //Atualiza a tabela JOGO com os dados informados na tela
+        //AtualizarResultados atualizarResultados =
+        //    new AtualizarResultados(idResultado, golsTimeCasa, faltasTimeCasa, golsTimeFora, faltasTimeFora);
+        //atualizarResultados.salvarResultados(atualizarResultados);
+
+        ////Recalcula a tabela RESULTADO
+        //AtualizarTabelaClassificacao atualizarTabelaClassificacao = new AtualizarTabelaClassificacao();
+        //atualizarTabelaClassificacao.calcularResultados(idCampeonato);
+    }
+
     public void areaRestrita()
     {
         int op = 1;
@@ -315,6 +370,7 @@ public class Telas
         {
             Console.WriteLine("1 - Para cadastrar times.");
             Console.WriteLine("2 - Para cadastrar campeonatos.");
+            Console.WriteLine("3 - Para cadastrar resultados.");
             Console.WriteLine("0 - Para sair da área restrita.");
             op = this.escolherOpcao();
             Console.Clear();
@@ -326,6 +382,9 @@ public class Telas
                     break;
                 case 2:
                     this.cadastroCampeonato();
+                    break;
+                case 3:
+                    this.cadastrarResultados();
                     break;
                 case 0:
                     Console.WriteLine("Saindo da área restrita.");
@@ -356,7 +415,7 @@ public class Telas
         Console.WriteLine();
         foreach (var clas in listaTabela)
         {
-            Console.WriteLine("Time: " + clas.ResTime + "\t | Pontos: " + clas.ResPontos + "\t | Saldo Gols: " + clas.ResSaldoGols + "\t | Total Faltas: " + clas.ResTotalFaltas);
+            Console.WriteLine("Time: " + clas.ResTime + " | Pontos: " + clas.ResPontos + " | Saldo Gols: " + clas.ResSaldoGols + " | Total Faltas: " + clas.ResTotalFaltas);
             Console.WriteLine();
         }
     }
