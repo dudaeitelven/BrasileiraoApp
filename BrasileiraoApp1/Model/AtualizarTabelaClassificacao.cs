@@ -92,6 +92,7 @@ namespace BrasileiraoApp.Model
         public void calcularResultados(int idCampeonato)
         {
             int i = 0;
+            int j = 0;
             int auxIdRodada;
             int auxNroRodada;
             int auxIdTime;
@@ -123,16 +124,16 @@ namespace BrasileiraoApp.Model
                 listTimeRodadas = listTimeCasa.Concat(listTimeVistante).ToList();
                 
                 //Percorre a lista de jogos do time
-                for (i = 0; i < listTimeRodadas.Count; i++)
+                for (j = 0; j < listTimeRodadas.Count; j++)
                 {
-                    auxIdRodada = listTimeRodadas[i].resIdRodada;
-                    auxNroRodada = listTimeRodadas[i].resNroRodada;
-                    auxIdTime = listTimeRodadas[i].resIdTimeCasa;
+                    auxIdRodada = listTimeRodadas[j].resIdRodada;
+                    auxNroRodada = listTimeRodadas[j].resNroRodada;
+                    auxIdTime = listTimeRodadas[j].resIdTimeCasa;
 
                     //Acumula os valores por rodada
-                    auxNumeroFaltas += listTimeRodadas[i].resNumeroFaltasCasa;
-                    auxPontos += listTimeRodadas[i].resPontos;
-                    auxSaldoGols += listTimeRodadas[i].resSaldoGols;
+                    auxNumeroFaltas += listTimeRodadas[j].resNumeroFaltasCasa;
+                    auxPontos += listTimeRodadas[j].resPontos;
+                    auxSaldoGols += listTimeRodadas[j].resSaldoGols;
 
                     //Persiste os dados na tabela RESULTADO
                     salvarResultado(auxIdTime, auxIdRodada, idCampeonato, auxPontos, auxNumeroFaltas, auxSaldoGols);

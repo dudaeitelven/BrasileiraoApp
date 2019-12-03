@@ -27,6 +27,8 @@ namespace BrasileiraoApp
             this.observacaoJogo = observacaoJogo;
         }
 
+        public JOGO(){}
+
         public int id { get; set; }
         public int idRodada { get; set; }
         public int idCampeonato { get; set; }

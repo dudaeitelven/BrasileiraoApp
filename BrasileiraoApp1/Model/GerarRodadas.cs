@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BrasileiraoApp.Model
 {
@@ -108,50 +109,84 @@ namespace BrasileiraoApp.Model
             }
         }
 
-        public void salvarJogo(JOGO campeonato)
+        public void salvarJogo(JOGO jogo)
         {
             using (CAMPEONATOSEntities context = new CAMPEONATOSEntities())
             {
-                context.JOGO.Add(campeonato);
+                context.JOGO.Add(jogo);
                 context.SaveChanges();
+            }
+        }
+
+        public void salvarRodadas(int idCampeonato, DateTime dataInicial)
+        {
+            int i = 0;
+
+            using (CAMPEONATOSEntities context = new CAMPEONATOSEntities())
+            {
+                for (i=0; i < 20; i++)
+                {
+                    RODADA rodada = new RODADA(idCampeonato, i + 1, dataInicial);
+                    context.RODADA.Add(rodada);
+                    context.SaveChanges();
+
+                    dataInicial = dataInicial.AddDays(7);
+                }
             }
         }
 
         public void comecar(int idCampeonato)
         {
             int[,] matriz;
-            GerarRodadas a = new GerarRodadas();
-
-            //Recebe os times vinculados ao campeonato.
-            List<int> listTimesCampeonato = new List<int>();
-            listTimesCampeonato = a.retornarTimesCampeonato(1);
-            
-            matriz = a.GenerateRoundRobin(20);
-
             int auxIdTime;
             int auxIdTimeAdversario;
             int auxIdRodada;
 
-            for (int i = 0; i < matriz.GetLength(0); i++)
+            GerarRodadas a = new GerarRodadas();
+
+            //Recebe os times vinculados ao campeonato.
+            List<int> listTimesCampeonato = new List<int>();
+            listTimesCampeonato = a.retornarTimesCampeonato(idCampeonato);
+
+            if (listTimesCampeonato.Count == 20)
             {
-                //Linha do time 
-                auxIdTime = listTimesCampeonato[i];
+                //Gera as rodadas e insere no banco
+                a.salvarRodadas(idCampeonato, Convert.ToDateTime("2019-01-01"));
 
-                for (int j = 0; j < matriz.GetLength(1); j++)
+                //Gera os jogos para o campeonato.
+                matriz = a.GenerateRoundRobin(20);
+
+                for (int i = 0; i < matriz.GetLength(0); i++)
                 {
-                    //Adversario
-                    auxIdTimeAdversario = listTimesCampeonato[matriz[i, j]];
+                    //Linha do time 
+                    auxIdTime = listTimesCampeonato[i];
 
-                    //Busca o id da roda x no compeonato y.
-                    auxIdRodada = a.retornarIdRodada(idCampeonato, j + 1);
+                    for (int j = 0; j < matriz.GetLength(1); j++)
+                    {
+                        //Adversario
+                        auxIdTimeAdversario = listTimesCampeonato[matriz[i, j]];
 
-                    //Time casa auxIdTime
-                    //Time fora auxIdTimeAdversario
+                        //Busca o id da roda x no compeonato y.
+                        auxIdRodada = a.retornarIdRodada(idCampeonato, j + 1);
 
-                    //Salva na tabela JOGO.
-                    JOGO jogo = new JOGO(auxIdRodada, idCampeonato, auxIdTime, 0, 0, auxIdTimeAdversario, 0, 0, "");
-                    a.salvarJogo(jogo);
+                        //Time casa auxIdTime
+                        //Time fora auxIdTimeAdversario
+
+                        //Salva na tabela JOGO.
+                        JOGO jogo = new JOGO(auxIdRodada, idCampeonato, auxIdTime, 0, 0, auxIdTimeAdversario, 0, 0, "");
+                        a.salvarJogo(jogo);
+                    }
                 }
+            }
+            else {
+                if (listTimesCampeonato.Count == 0)
+                {
+                    MessageBox.Show("Nenhum time vinculado ao campeonato!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Campeonato precisa ter 20 time para gerar as rodadas!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }   
             }
         }
 

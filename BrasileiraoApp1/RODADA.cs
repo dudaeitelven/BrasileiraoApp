@@ -20,7 +20,14 @@ namespace BrasileiraoApp
             this.JOGO = new HashSet<JOGO>();
             this.RESULTADO = new HashSet<RESULTADO>();
         }
-    
+
+        public RODADA(int idCampeonato, int numeroRodada, DateTime? dataRodada)
+        {
+            this.idCampeonato = idCampeonato;
+            this.numeroRodada = numeroRodada;
+            this.dataRodada = dataRodada;
+        }
+
         public int id { get; set; }
         public int idCampeonato { get; set; }
         public int numeroRodada { get; set; }
